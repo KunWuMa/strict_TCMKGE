@@ -1,0 +1,1 @@
+For exploratory source audits only, obtain SymMap v2 from http://www.symmap.org/download/ and place original XLSX files here. Check the provider's use and redistribution terms. Do not commit source tables.

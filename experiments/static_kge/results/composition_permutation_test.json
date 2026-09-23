@@ -1,0 +1,11 @@
+{
+  "observed_mrr": 0.584224811125854,
+  "null_repetitions": 50,
+  "null_mean_mrr": 0.16425097707645483,
+  "null_std_mrr": 0.009359691872693896,
+  "null_min_mrr": 0.14197533657408723,
+  "null_max_mrr": 0.18754044664070643,
+  "empirical_p_ge_observed": 0.0196078431372549,
+  "mean_fraction_test_heads_changed": 0.9479736408566721,
+  "control": "compositions permuted among held-out formulas with exactly equal ingredient counts"
+}

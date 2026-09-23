@@ -1,0 +1,624 @@
+{
+  "role": "zero-shot feasibility external validation",
+  "data_source": "10.5281/zenodo.21951692 v1.1",
+  "model_state": "three frozen TCM-MKG confirmatory checkpoints; no external fitting or tuning",
+  "coverage": {
+    "total_prescriptions": 335,
+    "included_prescriptions": 98,
+    "included_patients": 45,
+    "evaluation_queries": 98,
+    "exclusion_counts": {
+      "syndrome_not_exactly_mapped": 201,
+      "fewer_than_two_mapped_herbs": 10,
+      "no_mapped_pattern_in_trained_candidate_range": 26
+    },
+    "herb_unique_exact_coverage": 0.7054794520547946,
+    "herb_record_exact_coverage": 0.861535876323307,
+    "syndrome_unique_exact_coverage": 0.40594059405940597
+  },
+  "overall": {
+    "hybrid": {
+      "queries": 98,
+      "model_seeds": 3,
+      "mrr": {
+        "mean": 0.2441672327244436,
+        "sample_std": 0.036549061747786646
+      },
+      "hits1": {
+        "mean": 0.15986394557823128,
+        "sample_std": 0.04822260843114906
+      },
+      "hits3": {
+        "mean": 0.272108843537415,
+        "sample_std": 0.005891329277445135
+      },
+      "hits10": {
+        "mean": 0.4047619047619048,
+        "sample_std": 0.052363279994355964
+      },
+      "mean_rank": {
+        "mean": 48.278911564625844,
+        "sample_std": 8.115577119069581
+      }
+    },
+    "parameter_control": {
+      "queries": 98,
+      "model_seeds": 3,
+      "mrr": {
+        "mean": 0.24479969063443296,
+        "sample_std": 0.025814335602025028
+      },
+      "hits1": {
+        "mean": 0.14285714285714288,
+        "sample_std": 0.02699746235780194
+      },
+      "hits3": {
+        "mean": 0.2925170068027211,
+        "sample_std": 0.04123930494211612
+      },
+      "hits10": {
+        "mean": 0.4387755102040816,
+        "sample_std": 0.01767398783233547
+      },
+      "mean_rank": {
+        "mean": 45.343537414965986,
+        "sample_std": 5.238345916786352
+      }
+    },
+    "deepsets": {
+      "queries": 98,
+      "model_seeds": 3,
+      "mrr": {
+        "mean": 0.2126354181617203,
+        "sample_std": 0.021183116753377484
+      },
+      "hits1": {
+        "mean": 0.11564625850340136,
+        "sample_std": 0.025679708963505944
+      },
+      "hits3": {
+        "mean": 0.22789115646258504,
+        "sample_std": 0.03280153320065632
+      },
+      "hits10": {
+        "mean": 0.41496598639455784,
+        "sample_std": 0.04601275257982545
+      },
+      "mean_rank": {
+        "mean": 44.6530612244898,
+        "sample_std": 4.125314724277899
+      }
+    },
+    "pair_only": {
+      "queries": 98,
+      "model_seeds": 3,
+      "mrr": {
+        "mean": 0.23667179180307674,
+        "sample_std": 0.016238378241262594
+      },
+      "hits1": {
+        "mean": 0.12244897959183675,
+        "sample_std": 0.026997462357801944
+      },
+      "hits3": {
+        "mean": 0.3129251700680272,
+        "sample_std": 0.005891329277445167
+      },
+      "hits10": {
+        "mean": 0.42517006802721086,
+        "sample_std": 0.01558699215971373
+      },
+      "mean_rank": {
+        "mean": 46.38095238095238,
+        "sample_std": 4.236652280534872
+      }
+    }
+  },
+  "per_seed": {
+    "hybrid": [
+      {
+        "n": 98,
+        "mrr": 0.23245623284492783,
+        "hits1": 0.14285714285714285,
+        "hits3": 0.2755102040816326,
+        "hits10": 0.41836734693877553,
+        "mean_rank": 54.97959183673469
+      },
+      {
+        "n": 98,
+        "mrr": 0.2149090134648628,
+        "hits1": 0.12244897959183673,
+        "hits3": 0.2653061224489796,
+        "hits10": 0.3469387755102041,
+        "mean_rank": 50.60204081632653
+      },
+      {
+        "n": 98,
+        "mrr": 0.2851364518635402,
+        "hits1": 0.21428571428571427,
+        "hits3": 0.2755102040816326,
+        "hits10": 0.4489795918367347,
+        "mean_rank": 39.255102040816325
+      }
+    ],
+    "parameter_control": [
+      {
+        "n": 98,
+        "mrr": 0.215263226607451,
+        "hits1": 0.11224489795918367,
+        "hits3": 0.25510204081632654,
+        "hits10": 0.41836734693877553,
+        "mean_rank": 51.06122448979592
+      },
+      {
+        "n": 98,
+        "mrr": 0.2630432488428412,
+        "hits1": 0.15306122448979592,
+        "hits3": 0.336734693877551,
+        "hits10": 0.4489795918367347,
+        "mean_rank": 44.19387755102041
+      },
+      {
+        "n": 98,
+        "mrr": 0.25609259645300664,
+        "hits1": 0.16326530612244897,
+        "hits3": 0.2857142857142857,
+        "hits10": 0.4489795918367347,
+        "mean_rank": 40.775510204081634
+      }
+    ],
+    "deepsets": [
+      {
+        "n": 98,
+        "mrr": 0.20348972978512192,
+        "hits1": 0.11224489795918367,
+        "hits3": 0.21428571428571427,
+        "hits10": 0.3673469387755102,
+        "mean_rank": 49.173469387755105
+      },
+      {
+        "n": 98,
+        "mrr": 0.23685493442128483,
+        "hits1": 0.14285714285714285,
+        "hits3": 0.2653061224489796,
+        "hits10": 0.45918367346938777,
+        "mean_rank": 41.09183673469388
+      },
+      {
+        "n": 98,
+        "mrr": 0.1975615902787542,
+        "hits1": 0.09183673469387756,
+        "hits3": 0.20408163265306123,
+        "hits10": 0.41836734693877553,
+        "mean_rank": 43.69387755102041
+      }
+    ],
+    "pair_only": [
+      {
+        "n": 98,
+        "mrr": 0.2198011361513281,
+        "hits1": 0.09183673469387756,
+        "hits3": 0.3163265306122449,
+        "hits10": 0.40816326530612246,
+        "mean_rank": 50.46938775510204
+      },
+      {
+        "n": 98,
+        "mrr": 0.23802046588290116,
+        "hits1": 0.1326530612244898,
+        "hits3": 0.3163265306122449,
+        "hits10": 0.42857142857142855,
+        "mean_rank": 46.66326530612245
+      },
+      {
+        "n": 98,
+        "mrr": 0.2521937733750009,
+        "hits1": 0.14285714285714285,
+        "hits3": 0.30612244897959184,
+        "hits10": 0.4387755102040816,
+        "mean_rank": 42.01020408163265
+      }
+    ]
+  },
+  "frequency": {
+    "n": 98,
+    "mrr": 0.25401488241425185,
+    "hits1": 0.21428571428571427,
+    "hits3": 0.21428571428571427,
+    "hits10": 0.4387755102040816,
+    "mean_rank": 42.58673469387755
+  },
+  "uniform_random_expectation": {
+    "metrics": {
+      "mrr": 0.032827748917729375,
+      "hits1": 0.005714285714285713,
+      "hits3": 0.017142857142857147,
+      "hits10": 0.05714285714285715,
+      "mean_rank": 88.0
+    },
+    "candidate_count": {
+      "min": 175,
+      "median": 175.0,
+      "max": 175,
+      "mean": 175.0
+    }
+  },
+  "patient_cluster_bootstrap": {
+    "hybrid_vs_parameter_control": {
+      "patients": 45,
+      "queries": 98,
+      "mrr": {
+        "difference": -0.0006324579099893586,
+        "patient_cluster_bootstrap_95ci": [
+          -0.03893916489547064,
+          0.038853302250728625
+        ],
+        "probability_difference_le_zero": 0.5192,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.017006802721088437,
+        "patient_cluster_bootstrap_95ci": [
+          -0.0217391304347826,
+          0.05797101449275361
+        ],
+        "probability_difference_le_zero": 0.18705,
+        "repetitions": 20000
+      }
+    },
+    "hybrid_vs_deepsets": {
+      "patients": 45,
+      "queries": 98,
+      "mrr": {
+        "difference": 0.03153181456272327,
+        "patient_cluster_bootstrap_95ci": [
+          -0.01765296962431327,
+          0.09249947266785834
+        ],
+        "probability_difference_le_zero": 0.1388,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.044217687074829926,
+        "patient_cluster_bootstrap_95ci": [
+          -0.013201320132013203,
+          0.11304477225672867
+        ],
+        "probability_difference_le_zero": 0.08815,
+        "repetitions": 20000
+      }
+    },
+    "hybrid_vs_pair_only": {
+      "patients": 45,
+      "queries": 98,
+      "mrr": {
+        "difference": 0.007495440921366892,
+        "patient_cluster_bootstrap_95ci": [
+          -0.033950317029360425,
+          0.05838274786841379
+        ],
+        "probability_difference_le_zero": 0.40055,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.03741496598639456,
+        "patient_cluster_bootstrap_95ci": [
+          -0.016067181346746208,
+          0.10692018013820932
+        ],
+        "probability_difference_le_zero": 0.1286,
+        "repetitions": 20000
+      }
+    }
+  },
+  "by_mapped_herb_count": {
+    "2_to_5": {
+      "n": 0
+    },
+    "6_to_10": {
+      "n": 9,
+      "hybrid": {
+        "queries": 9,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2618260023951124,
+          "sample_std": 0.06705625532707706
+        },
+        "hits1": {
+          "mean": 0.14814814814814814,
+          "sample_std": 0.06415002990995841
+        },
+        "hits3": {
+          "mean": 0.4074074074074074,
+          "sample_std": 0.06415002990995841
+        },
+        "hits10": {
+          "mean": 0.48148148148148145,
+          "sample_std": 0.06415002990995845
+        },
+        "mean_rank": {
+          "mean": 48.925925925925924,
+          "sample_std": 10.680739173877972
+        }
+      },
+      "parameter_control": {
+        "queries": 9,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.21731837589350236,
+          "sample_std": 0.08029065140964288
+        },
+        "hits1": {
+          "mean": 0.07407407407407407,
+          "sample_std": 0.06415002990995841
+        },
+        "hits3": {
+          "mean": 0.3333333333333333,
+          "sample_std": 0.1924500897298753
+        },
+        "hits10": {
+          "mean": 0.5185185185185185,
+          "sample_std": 0.06415002990995845
+        },
+        "mean_rank": {
+          "mean": 48.0,
+          "sample_std": 8.565650609870238
+        }
+      },
+      "deepsets": {
+        "queries": 9,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.34185393239272727,
+          "sample_std": 0.04871282565879
+        },
+        "hits1": {
+          "mean": 0.25925925925925924,
+          "sample_std": 0.06415002990995841
+        },
+        "hits3": {
+          "mean": 0.3333333333333333,
+          "sample_std": 0.1111111111111111
+        },
+        "hits10": {
+          "mean": 0.5185185185185185,
+          "sample_std": 0.06415002990995845
+        },
+        "mean_rank": {
+          "mean": 40.44444444444444,
+          "sample_std": 5.5655465717191985
+        }
+      },
+      "pair_only": {
+        "queries": 9,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2801914180891438,
+          "sample_std": 0.11467134661943236
+        },
+        "hits1": {
+          "mean": 0.14814814814814814,
+          "sample_std": 0.16972502573910517
+        },
+        "hits3": {
+          "mean": 0.4074074074074074,
+          "sample_std": 0.06415002990995841
+        },
+        "hits10": {
+          "mean": 0.4444444444444444,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 55.333333333333336,
+          "sample_std": 6.875434890846658
+        }
+      }
+    },
+    "over_10": {
+      "n": 89,
+      "hybrid": {
+        "queries": 89,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.24238151444314002,
+          "sample_std": 0.034731528290034064
+        },
+        "hits1": {
+          "mean": 0.16104868913857676,
+          "sample_std": 0.046779011223958035
+        },
+        "hits3": {
+          "mean": 0.2584269662921348,
+          "sample_std": 0.011235955056179775
+        },
+        "hits10": {
+          "mean": 0.3970037453183521,
+          "sample_std": 0.05309905198036641
+        },
+        "mean_rank": {
+          "mean": 48.21348314606741,
+          "sample_std": 7.944479733600954
+        }
+      },
+      "parameter_control": {
+        "queries": 89,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2475786999902574,
+          "sample_std": 0.028001059263310226
+        },
+        "hits1": {
+          "mean": 0.149812734082397,
+          "sample_std": 0.03432640970004374
+        },
+        "hits3": {
+          "mean": 0.28838951310861427,
+          "sample_std": 0.028276533465433507
+        },
+        "hits10": {
+          "mean": 0.4307116104868914,
+          "sample_std": 0.01297416335257586
+        },
+        "mean_rank": {
+          "mean": 45.074906367041194,
+          "sample_std": 5.442267184151345
+        }
+      },
+      "deepsets": {
+        "queries": 89,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.19956837739678704,
+          "sample_std": 0.02217209792623857
+        },
+        "hits1": {
+          "mean": 0.10112359550561796,
+          "sample_std": 0.029727542820950456
+        },
+        "hits3": {
+          "mean": 0.21722846441947566,
+          "sample_std": 0.02594832670515172
+        },
+        "hits10": {
+          "mean": 0.40449438202247184,
+          "sample_std": 0.05148961455006561
+        },
+        "mean_rank": {
+          "mean": 45.078651685393254,
+          "sample_std": 4.845589479814924
+        }
+      },
+      "pair_only": {
+        "queries": 89,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2322709307179688,
+          "sample_std": 0.015388776722883192
+        },
+        "hits1": {
+          "mean": 0.1198501872659176,
+          "sample_std": 0.02827653346543352
+        },
+        "hits3": {
+          "mean": 0.30337078651685395,
+          "sample_std": 0.011235955056179775
+        },
+        "hits10": {
+          "mean": 0.4232209737827715,
+          "sample_std": 0.017163204850021884
+        },
+        "mean_rank": {
+          "mean": 45.47565543071161,
+          "sample_std": 3.9794373208277634
+        }
+      }
+    }
+  },
+  "by_relation": {
+    "cpm_has_tcmt::传统医学证候": {
+      "queries": 98,
+      "hybrid": {
+        "queries": 98,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2441672327244436,
+          "sample_std": 0.036549061747786646
+        },
+        "hits1": {
+          "mean": 0.15986394557823128,
+          "sample_std": 0.04822260843114906
+        },
+        "hits3": {
+          "mean": 0.272108843537415,
+          "sample_std": 0.005891329277445135
+        },
+        "hits10": {
+          "mean": 0.4047619047619048,
+          "sample_std": 0.052363279994355964
+        },
+        "mean_rank": {
+          "mean": 48.278911564625844,
+          "sample_std": 8.115577119069581
+        }
+      },
+      "parameter_control": {
+        "queries": 98,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.24479969063443296,
+          "sample_std": 0.025814335602025028
+        },
+        "hits1": {
+          "mean": 0.14285714285714288,
+          "sample_std": 0.02699746235780194
+        },
+        "hits3": {
+          "mean": 0.2925170068027211,
+          "sample_std": 0.04123930494211612
+        },
+        "hits10": {
+          "mean": 0.4387755102040816,
+          "sample_std": 0.01767398783233547
+        },
+        "mean_rank": {
+          "mean": 45.343537414965986,
+          "sample_std": 5.238345916786352
+        }
+      },
+      "deepsets": {
+        "queries": 98,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.2126354181617203,
+          "sample_std": 0.021183116753377484
+        },
+        "hits1": {
+          "mean": 0.11564625850340136,
+          "sample_std": 0.025679708963505944
+        },
+        "hits3": {
+          "mean": 0.22789115646258504,
+          "sample_std": 0.03280153320065632
+        },
+        "hits10": {
+          "mean": 0.41496598639455784,
+          "sample_std": 0.04601275257982545
+        },
+        "mean_rank": {
+          "mean": 44.6530612244898,
+          "sample_std": 4.125314724277899
+        }
+      },
+      "pair_only": {
+        "queries": 98,
+        "model_seeds": 3,
+        "mrr": {
+          "mean": 0.23667179180307674,
+          "sample_std": 0.016238378241262594
+        },
+        "hits1": {
+          "mean": 0.12244897959183675,
+          "sample_std": 0.026997462357801944
+        },
+        "hits3": {
+          "mean": 0.3129251700680272,
+          "sample_std": 0.005891329277445167
+        },
+        "hits10": {
+          "mean": 0.42517006802721086,
+          "sample_std": 0.01558699215971373
+        },
+        "mean_rank": {
+          "mean": 46.38095238095238,
+          "sample_std": 4.236652280534872
+        }
+      }
+    }
+  },
+  "limitations": [
+    "single-practitioner, single-clinic dataset",
+    "recorded diagnoses rather than independent adjudication",
+    "strict terminology mapping covers less than half of unique recorded syndrome strings",
+    "source domain is individualized decoctions/granules whereas training formulas are Chinese patent medicines"
+  ]
+}

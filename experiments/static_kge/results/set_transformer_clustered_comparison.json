@@ -1,0 +1,26 @@
+{
+  "paircomp_vs_set_transformer": {
+    "formula_clusters": 610,
+    "edges": 1093,
+    "mrr_difference": 0.023562425592963235,
+    "cluster_bootstrap_95ci": [
+      0.010762009291384827,
+      0.036474948809369474
+    ],
+    "probability_difference_le_zero": 5e-05,
+    "repetitions": 20000
+  },
+  "seed_mrr": {
+    "paircomp": [
+      0.6411152991401738,
+      0.6520890401602374,
+      0.648559624032901
+    ],
+    "set_transformer": [
+      0.6219878152199603,
+      0.6288620197058967,
+      0.6202268516285658
+    ]
+  },
+  "protocol": "seed-average each query, then formula-clustered bootstrap with all queries retained"
+}

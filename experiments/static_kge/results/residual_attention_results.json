@@ -1,0 +1,100 @@
+{
+  "config": {
+    "seed": 20260915,
+    "strict": {
+      "original_train": 326768,
+      "strict_train": 241240,
+      "held_formula_count": 1238
+    }
+  },
+  "models": {
+    "residual_attention": {
+      "typed": {
+        "n": 1091,
+        "mrr": 0.5552124397875777,
+        "hits1": 0.43354720439963335,
+        "hits3": 0.620531622364803,
+        "hits10": 0.7717690192483959,
+        "mean_rank": 15.134738771769019
+      },
+      "untyped": {
+        "n": 1091,
+        "mrr": 0.026337510897017472,
+        "hits1": 0.007332722273143905,
+        "hits3": 0.021998166819431713,
+        "hits10": 0.06232813932172319,
+        "mean_rank": 21631.107241063244
+      },
+      "selected": {
+        "epoch": 40,
+        "loss": 0.018437691995779337,
+        "dev_typed": {
+          "n": 1108,
+          "mrr": 0.5659608237572937,
+          "hits1": 0.434115523465704,
+          "hits3": 0.6615523465703971,
+          "hits10": 0.7942238267148014,
+          "mean_rank": 14.830324909747292
+        }
+      },
+      "parameters": 16831371,
+      "relation_gates": {
+        "chp_contains_compound": 0.5,
+        "chp_from_species": 0.5,
+        "chp_has_property": 0.5,
+        "cpm_contains_chp": 0.5,
+        "cpm_has_tcmt::\u4f20\u7edf\u533b\u5b66\u75be\u75c5": 0.37099573016166687,
+        "cpm_has_tcmt::\u4f20\u7edf\u533b\u5b66\u8bc1\u5019": 0.37580418586730957,
+        "cpm_has_tcmt::\u6cbb\u5219": 0.6597216725349426,
+        "cpm_has_tcmt::\u6cbb\u6cd5": 0.3474291265010834,
+        "cpm_has_tcmt::\u75c5\u56e0": 0.6822457313537598,
+        "cpm_has_tcmt::\u75c5\u673a": 0.6827980279922485,
+        "cpm_treats_icd11": 0.3244456648826599
+      }
+    },
+    "dose_residual_attention": {
+      "typed": {
+        "n": 1091,
+        "mrr": 0.5555593788700659,
+        "hits1": 0.42804766269477545,
+        "hits3": 0.6241979835013749,
+        "hits10": 0.7974335472043996,
+        "mean_rank": 13.813932172318973
+      },
+      "untyped": {
+        "n": 1091,
+        "mrr": 0.03572509014505778,
+        "hits1": 0.011915673693858845,
+        "hits3": 0.031164069660861594,
+        "hits10": 0.07882676443629698,
+        "mean_rank": 21273.53070577452
+      },
+      "selected": {
+        "epoch": 35,
+        "loss": 0.020216824044868097,
+        "dev_typed": {
+          "n": 1108,
+          "mrr": 0.5668952885815032,
+          "hits1": 0.44494584837545126,
+          "hits3": 0.6435018050541517,
+          "hits10": 0.7906137184115524,
+          "mean_rank": 13.98826714801444
+        }
+      },
+      "parameters": 16831371,
+      "relation_gates": {
+        "chp_contains_compound": 0.5,
+        "chp_from_species": 0.5,
+        "chp_has_property": 0.5,
+        "cpm_contains_chp": 0.5,
+        "cpm_has_tcmt::\u4f20\u7edf\u533b\u5b66\u75be\u75c5": 0.3756818175315857,
+        "cpm_has_tcmt::\u4f20\u7edf\u533b\u5b66\u8bc1\u5019": 0.3887125551700592,
+        "cpm_has_tcmt::\u6cbb\u5219": 0.5531734824180603,
+        "cpm_has_tcmt::\u6cbb\u6cd5": 0.3744634687900543,
+        "cpm_has_tcmt::\u75c5\u56e0": 0.5970621109008789,
+        "cpm_has_tcmt::\u75c5\u673a": 0.4878893792629242,
+        "cpm_treats_icd11": 0.35291382670402527
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "seed": 20261007,
+  "frozen_model": "hybrid_pair",
+  "role": "confirmatory resplit",
+  "same_corpus_as_development": true,
+  "eligible_formula_heads": 6165,
+  "pre_filter_dev_heads": 616,
+  "pre_filter_test_heads": 616,
+  "post_filter_dev_heads": 605,
+  "post_filter_test_heads": 610,
+  "relation_labels": {
+    "cpm_has_tcmt::治则": "治则",
+    "cpm_has_tcmt::治法": "治法",
+    "cpm_has_tcmt::病因": "病因",
+    "cpm_has_tcmt::病机": "病机",
+    "cpm_has_tcmt::传统医学证候": "传统医学证候",
+    "cpm_has_tcmt::传统医学疾病": "传统医学疾病"
+  },
+  "split": {
+    "train_all": 326759,
+    "train_target": 8927,
+    "train_context": 317832,
+    "dev_target": 1114,
+    "test_target": 1093,
+    "entities": 65598,
+    "relations": 11,
+    "dev_heads": 605,
+    "test_heads": 610,
+    "all_eval_entities_seen_in_train": true,
+    "target_edge_disjoint": true
+  },
+  "definition": "formula-disjoint composition-only resplit created after hybrid architecture selection"
+}

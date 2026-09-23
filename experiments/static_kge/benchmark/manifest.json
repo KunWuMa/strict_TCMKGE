@@ -1,0 +1,49 @@
+{
+  "seed": 20260915,
+  "target_relation": "CPM -> typed TCMT relation",
+  "target_edges_total": 11184,
+  "context_edges_total": 317832,
+  "relation_labels": {
+    "cpm_has_tcmt::治则": "治则",
+    "cpm_has_tcmt::治法": "治法",
+    "cpm_has_tcmt::病因": "病因",
+    "cpm_has_tcmt::病机": "病机",
+    "cpm_has_tcmt::传统医学证候": "传统医学证候",
+    "cpm_has_tcmt::传统医学疾病": "传统医学疾病"
+  },
+  "random": {
+    "train_all": 326831,
+    "train_target": 8999,
+    "train_context": 317832,
+    "dev_target": 1089,
+    "test_target": 1096,
+    "entities": 65647,
+    "relations": 11,
+    "dev_heads": 1011,
+    "test_heads": 1012,
+    "all_eval_entities_seen_in_train": true,
+    "target_edge_disjoint": true
+  },
+  "formula_holdout": {
+    "train_all": 326768,
+    "train_target": 8936,
+    "train_context": 317832,
+    "dev_target": 1108,
+    "test_target": 1091,
+    "entities": 65603,
+    "relations": 11,
+    "dev_heads": 628,
+    "test_heads": 628,
+    "all_eval_entities_seen_in_train": true,
+    "target_edge_disjoint": true
+  },
+  "formula_holdout_definition": "All target CPM-TCMT edges of held-out CPM heads are absent from target training; non-target context edges remain. This is cross-relation cold-start, not unseen-entity induction.",
+  "source_sha256": {
+    "D3_CPM_TCMT.tsv": "b737e8b379156eb41d8c3e5d1122e4a29f5db8c594d5de38947078fc75b2210b",
+    "D4_CPM_CHP.tsv": "fcb3349d58bea5b4b0ab10b58b502d8a2989aa4554394d04b38d6220d81cba7d",
+    "D5_CPM_ICD11.tsv": "e1622c7556dc42cd1a9ea1751e733d14df4daf86cd153aa2e2d4914d359b716d",
+    "D7_CHP_Medicinal_properties.tsv": "249fed3e8f86387e864a9a9082fb677c0b2257d0bb7b40e3363e3081ec9da1f9",
+    "D8_CHP_NP.tsv": "731eba61bee44b5d78d4638ffba44e2269a560aa0330d26f481ccc82b4f2cdec",
+    "D9_CHP_InChIKey.tsv": "d176db2bbfef049cdaf8dbdf6736b9694111f3a377e7aa0602ddf3a92516c405"
+  }
+}

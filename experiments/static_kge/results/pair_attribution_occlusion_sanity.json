@@ -1,0 +1,16 @@
+{
+  "definition": "remove the two herbs in a gradient-selected pair, recompute all normalized first- and second-order statistics, and compare target-score drop with a random within-formula pair",
+  "eligible_seed_query_rows": 1365,
+  "formula_clusters": 277,
+  "mean_target_score_drop": {
+    "top_pair": 4.821051866078115,
+    "random_pair": 2.9166586230089377,
+    "lowest_pair": 0.9265730031462379
+  },
+  "top_minus_random_cluster_mean": 1.9521060748507686,
+  "top_minus_random_formula_clustered_95ci": [
+    1.5977327105882317,
+    2.30061841682012
+  ],
+  "scope": "perturbation sanity check for local model sensitivity; not evidence of clinical herb-pair validity"
+}

@@ -1,0 +1,25 @@
+{
+  "paircomp_vs_mean_complex": {
+    "formula_clusters": 610,
+    "edges": 1093,
+    "mrr_difference": -0.0025754353267891826,
+    "cluster_bootstrap_95ci": [
+      -0.01619070170691834,
+      0.01101026073466859
+    ],
+    "probability_difference_le_zero": 0.64305,
+    "repetitions": 20000
+  },
+  "paircomp_vs_matched": {
+    "formula_clusters": 610,
+    "edges": 1093,
+    "mrr_difference": 0.04033515939703481,
+    "cluster_bootstrap_95ci": [
+      0.02876253357409575,
+      0.052095441061241546
+    ],
+    "probability_difference_le_zero": 0.0,
+    "repetitions": 20000
+  },
+  "protocol": "seed-average each query, then 20,000 formula-clustered bootstrap replicates; unrestricted filtered ranking after global-negative training"
+}

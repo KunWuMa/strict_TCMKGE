@@ -1,0 +1,89 @@
+{
+  "seed": 20261007,
+  "eligible_formula_heads": 6165,
+  "candidate_definition": "relation-specific distinct tails in target training edges",
+  "filtering_applied_before_all_model_training": true,
+  "splits": {
+    "dev": {
+      "pre_filter": {
+        "queries": 1139,
+        "formula_heads": 616,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 490,
+          "cpm_has_tcmt::传统医学证候": 229,
+          "cpm_has_tcmt::治则": 4,
+          "cpm_has_tcmt::治法": 403,
+          "cpm_has_tcmt::病因": 5,
+          "cpm_has_tcmt::病机": 8
+        }
+      },
+      "retained": {
+        "queries": 1114,
+        "formula_heads": 605,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 480,
+          "cpm_has_tcmt::传统医学证候": 223,
+          "cpm_has_tcmt::治则": 4,
+          "cpm_has_tcmt::治法": 399,
+          "cpm_has_tcmt::病因": 4,
+          "cpm_has_tcmt::病机": 4
+        }
+      },
+      "excluded": {
+        "queries": 25,
+        "formula_heads": 24,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 10,
+          "cpm_has_tcmt::传统医学证候": 6,
+          "cpm_has_tcmt::治法": 4,
+          "cpm_has_tcmt::病因": 1,
+          "cpm_has_tcmt::病机": 4
+        }
+      },
+      "excluded_fraction": 0.021949078138718173,
+      "all_retained_targets_in_training_derived_relation_range": true,
+      "builder_filter_equals_relation_specific_coverage": true
+    },
+    "test": {
+      "pre_filter": {
+        "queries": 1118,
+        "formula_heads": 616,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 472,
+          "cpm_has_tcmt::传统医学证候": 200,
+          "cpm_has_tcmt::治则": 5,
+          "cpm_has_tcmt::治法": 431,
+          "cpm_has_tcmt::病因": 4,
+          "cpm_has_tcmt::病机": 6
+        }
+      },
+      "retained": {
+        "queries": 1093,
+        "formula_heads": 610,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 460,
+          "cpm_has_tcmt::传统医学证候": 195,
+          "cpm_has_tcmt::治则": 5,
+          "cpm_has_tcmt::治法": 429,
+          "cpm_has_tcmt::病因": 3,
+          "cpm_has_tcmt::病机": 1
+        }
+      },
+      "excluded": {
+        "queries": 25,
+        "formula_heads": 25,
+        "by_relation": {
+          "cpm_has_tcmt::传统医学疾病": 12,
+          "cpm_has_tcmt::传统医学证候": 5,
+          "cpm_has_tcmt::治法": 2,
+          "cpm_has_tcmt::病因": 1,
+          "cpm_has_tcmt::病机": 5
+        }
+      },
+      "excluded_fraction": 0.022361359570661897,
+      "all_retained_targets_in_training_derived_relation_range": true,
+      "builder_filter_equals_relation_specific_coverage": true
+    }
+  },
+  "methods_share_identical_retained_queries": true
+}

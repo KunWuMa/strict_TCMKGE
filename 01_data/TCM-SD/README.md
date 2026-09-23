@@ -1,0 +1,1 @@
+For exploratory source audits only, obtain TCM-SD from https://github.com/Borororo/ZY-BERT and place original files here. Its source README states a CC BY-NC-SA 4.0 data license. Do not commit clinical records.

@@ -1,0 +1,41 @@
+# Environments and generated caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+envs/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Third-party datasets and reconstructed row-level data
+*.tsv
+*.csv
+*.xlsx
+*.xls
+*.zip
+*.7z
+*.rar
+*.jsonl
+*.docx
+/01_data/TCM-MKG/*
+!/01_data/TCM-MKG/README.md
+/01_data/TCM-SD/*
+!/01_data/TCM-SD/README.md
+/01_data/SymMap_v2/*
+!/01_data/SymMap_v2/README.md
+/experiments/static_kge/external_data/*
+!/experiments/static_kge/external_data/README.md
+/experiments/static_kge/benchmark/*/
+/experiments/static_kge/manuscript/
+/experiments/static_kge/third_party/
+/experiments/static_kge/benchmark/ingram_tcm/
+/experiments/static_kge/results/external_mapping_audit.json
+/experiments/static_kge/results/external_zero_shot_cohort.json
+/experiments/static_kge/results/pair_attribution_cases.json
+/experiments/static_kge/results/ingram_tcm_full200_results.json
+
+# Manuscript outside the manuscript directory
+/experiments/static_kge/PAIRCOMP_KGE_MANUSCRIPT.md

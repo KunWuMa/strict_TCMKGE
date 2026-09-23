@@ -1,0 +1,55 @@
+{
+  "seeds": [
+    20260915,
+    20260916,
+    20260917
+  ],
+  "test_edges": 1093,
+  "formula_heads": 610,
+  "decoders": {
+    "distmult": {
+      "pair_vs_mean_query_bootstrap": {
+        "mrr_difference": 0.022200443611370576,
+        "paired_query_bootstrap_95ci": [
+          0.0098094873079843,
+          0.034862199938863137
+        ],
+        "probability_difference_le_zero": 0.0004,
+        "repetitions": 20000
+      },
+      "pair_vs_mean_formula_cluster_bootstrap": {
+        "formula_clusters": 610,
+        "edges": 1093,
+        "mrr_difference": 0.022200443611370576,
+        "cluster_bootstrap_95ci": [
+          0.007548827796902079,
+          0.03725118076617283
+        ],
+        "probability_difference_le_zero": 0.0012,
+        "repetitions": 20000
+      }
+    },
+    "transe": {
+      "pair_vs_mean_query_bootstrap": {
+        "mrr_difference": 0.001968093273506861,
+        "paired_query_bootstrap_95ci": [
+          -0.00599762880040846,
+          0.00990630489115112
+        ],
+        "probability_difference_le_zero": 0.31615,
+        "repetitions": 20000
+      },
+      "pair_vs_mean_formula_cluster_bootstrap": {
+        "formula_clusters": 610,
+        "edges": 1093,
+        "mrr_difference": 0.0019680932735068593,
+        "cluster_bootstrap_95ci": [
+          -0.006962286317056676,
+          0.010918244897715763
+        ],
+        "probability_difference_le_zero": 0.3311,
+        "repetitions": 20000
+      }
+    }
+  }
+}

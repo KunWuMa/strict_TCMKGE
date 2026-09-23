@@ -1,0 +1,195 @@
+{
+  "seed_averaged": {
+    "pair": {
+      "mrr": 0.5816280799535597,
+      "per_seed_mrr": [
+        0.5899732061619706,
+        0.5805116012969039,
+        0.5743994324018042
+      ]
+    },
+    "uniform": {
+      "mrr": 0.5773085262426083,
+      "per_seed_mrr": [
+        0.5776692888558423,
+        0.5707427372669496,
+        0.583513552605033
+      ]
+    },
+    "deepsets": {
+      "mrr": 0.5840470105450921,
+      "per_seed_mrr": [
+        0.5874262991009271,
+        0.5777659977759684,
+        0.5869487347583808
+      ]
+    }
+  },
+  "paired_bootstrap": {
+    "pair_vs_uniform": {
+      "queries": 1073,
+      "seeds": 3,
+      "mrr_difference": 0.004319553710951242,
+      "bootstrap_95ci": [
+        -0.008296160573887516,
+        0.017080642835291503
+      ],
+      "probability_difference_le_zero": 0.2492,
+      "repetitions": 20000
+    },
+    "pair_vs_deepsets": {
+      "queries": 1073,
+      "seeds": 3,
+      "mrr_difference": -0.002418930591532516,
+      "bootstrap_95ci": [
+        -0.012134791137474142,
+        0.007322012632033289
+      ],
+      "probability_difference_le_zero": 0.6898,
+      "repetitions": 20000
+    },
+    "deepsets_vs_uniform": {
+      "queries": 1073,
+      "seeds": 3,
+      "mrr_difference": 0.006738484302483758,
+      "bootstrap_95ci": [
+        -0.0037097711014113344,
+        0.017223813966173767
+      ],
+      "probability_difference_le_zero": 0.10295,
+      "repetitions": 20000
+    }
+  },
+  "learned_pair_gate": {
+    "per_seed": [
+      0.7054625749588013,
+      0.7092034816741943,
+      0.6903067231178284
+    ],
+    "mean": 0.7016575932502747
+  },
+  "by_formula_size": {
+    "1_to_5": {
+      "n": 382,
+      "pair_mrr": 0.6288759944398815,
+      "uniform_mrr": 0.5972585323704317,
+      "deepsets_mrr": 0.6292501736142537,
+      "pair_vs_uniform": {
+        "queries": 382,
+        "seeds": 3,
+        "mrr_difference": 0.03161746206944971,
+        "bootstrap_95ci": [
+          0.009881194676369002,
+          0.05386707637399846
+        ],
+        "probability_difference_le_zero": 0.0025,
+        "repetitions": 20000
+      },
+      "pair_vs_deepsets": {
+        "queries": 382,
+        "seeds": 3,
+        "mrr_difference": -0.00037417917437229854,
+        "bootstrap_95ci": [
+          -0.01651619018210087,
+          0.01603939109488595
+        ],
+        "probability_difference_le_zero": 0.5114,
+        "repetitions": 20000
+      }
+    },
+    "6_to_10": {
+      "n": 345,
+      "pair_mrr": 0.5873221250565355,
+      "uniform_mrr": 0.5995941497367397,
+      "deepsets_mrr": 0.5978350825100702,
+      "pair_vs_uniform": {
+        "queries": 345,
+        "seeds": 3,
+        "mrr_difference": -0.012272024680204234,
+        "bootstrap_95ci": [
+          -0.03440875341556853,
+          0.009530483711960861
+        ],
+        "probability_difference_le_zero": 0.8629,
+        "repetitions": 20000
+      },
+      "pair_vs_deepsets": {
+        "queries": 345,
+        "seeds": 3,
+        "mrr_difference": -0.01051295745353476,
+        "bootstrap_95ci": [
+          -0.02746215639120117,
+          0.006332497933569999
+        ],
+        "probability_difference_le_zero": 0.8937,
+        "repetitions": 20000
+      }
+    },
+    "over_10": {
+      "n": 346,
+      "pair_mrr": 0.5237866091607802,
+      "uniform_mrr": 0.533061582756181,
+      "deepsets_mrr": 0.520392406151054,
+      "pair_vs_uniform": {
+        "queries": 346,
+        "seeds": 3,
+        "mrr_difference": -0.009274973595400708,
+        "bootstrap_95ci": [
+          -0.030213259465441213,
+          0.011752551796272203
+        ],
+        "probability_difference_le_zero": 0.80995,
+        "repetitions": 20000
+      },
+      "pair_vs_deepsets": {
+        "queries": 346,
+        "seeds": 3,
+        "mrr_difference": 0.003394203009726353,
+        "bootstrap_95ci": [
+          -0.013740827724321879,
+          0.02041258588737412
+        ],
+        "probability_difference_le_zero": 0.34885,
+        "repetitions": 20000
+      }
+    }
+  },
+  "by_relation": {
+    "cpm_has_tcmt::传统医学疾病": {
+      "n": 431,
+      "pair_mrr": 0.5388020522762675,
+      "uniform_mrr": 0.5298241293647012,
+      "deepsets_mrr": 0.5368403297313172
+    },
+    "cpm_has_tcmt::传统医学证候": {
+      "n": 206,
+      "pair_mrr": 0.5355019500068602,
+      "uniform_mrr": 0.5376779959884211,
+      "deepsets_mrr": 0.5287238680905695
+    },
+    "cpm_has_tcmt::治则": {
+      "n": 4,
+      "pair_mrr": 0.875,
+      "uniform_mrr": 0.875,
+      "deepsets_mrr": 0.875
+    },
+    "cpm_has_tcmt::治法": {
+      "n": 426,
+      "pair_mrr": 0.6415029007383748,
+      "uniform_mrr": 0.6382826383820187,
+      "deepsets_mrr": 0.651839060258979
+    },
+    "cpm_has_tcmt::病因": {
+      "n": 2,
+      "pair_mrr": 1.0,
+      "uniform_mrr": 1.0,
+      "deepsets_mrr": 1.0
+    },
+    "cpm_has_tcmt::病机": {
+      "n": 4,
+      "pair_mrr": 0.6924019607843137,
+      "uniform_mrr": 0.7319444444444444,
+      "deepsets_mrr": 0.8009259259259259
+    }
+  }
+}

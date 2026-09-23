@@ -1,0 +1,58 @@
+{
+  "review_split_2": {
+    "seed": 20261017,
+    "eligible_formula_heads": 6165,
+    "post_filter_dev_heads": 606,
+    "post_filter_test_heads": 609,
+    "relation_labels": {
+      "cpm_has_tcmt::治则": "治则",
+      "cpm_has_tcmt::治法": "治法",
+      "cpm_has_tcmt::病因": "病因",
+      "cpm_has_tcmt::病机": "病机",
+      "cpm_has_tcmt::传统医学证候": "传统医学证候",
+      "cpm_has_tcmt::传统医学疾病": "传统医学疾病"
+    },
+    "split": {
+      "train_all": 326848,
+      "train_target": 9016,
+      "train_context": 317832,
+      "dev_target": 1053,
+      "test_target": 1073,
+      "entities": 65607,
+      "relations": 11,
+      "dev_heads": 606,
+      "test_heads": 609,
+      "all_eval_entities_seen_in_train": true,
+      "target_edge_disjoint": true
+    },
+    "definition": "independent formula-disjoint split; identical construction and filtering rules"
+  },
+  "review_split_3": {
+    "seed": 20261027,
+    "eligible_formula_heads": 6165,
+    "post_filter_dev_heads": 603,
+    "post_filter_test_heads": 611,
+    "relation_labels": {
+      "cpm_has_tcmt::治则": "治则",
+      "cpm_has_tcmt::治法": "治法",
+      "cpm_has_tcmt::病因": "病因",
+      "cpm_has_tcmt::病机": "病机",
+      "cpm_has_tcmt::传统医学证候": "传统医学证候",
+      "cpm_has_tcmt::传统医学疾病": "传统医学疾病"
+    },
+    "split": {
+      "train_all": 326839,
+      "train_target": 9007,
+      "train_context": 317832,
+      "dev_target": 1105,
+      "test_target": 1038,
+      "entities": 65613,
+      "relations": 11,
+      "dev_heads": 603,
+      "test_heads": 611,
+      "all_eval_entities_seen_in_train": true,
+      "target_edge_disjoint": true
+    },
+    "definition": "independent formula-disjoint split; identical construction and filtering rules"
+  }
+}

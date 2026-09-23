@@ -1,0 +1,1 @@
+Only split manifests are published here. TSV triples and train/dev/test partitions are derived from TCM-MKG and excluded. Regenerate them with the build_*.py scripts after downloading original tables. Contact the corresponding authors to request exact processed partitions, subject to source-provider permissions.

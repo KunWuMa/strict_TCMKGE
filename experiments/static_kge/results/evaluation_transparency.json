@@ -1,0 +1,575 @@
+{
+  "protocol": {
+    "typed_candidates": "relation ranges observed in strict training graph",
+    "untyped_candidates": 65598,
+    "filtered": true
+  },
+  "relations": {
+    "cpm_has_tcmt::传统医学疾病": {
+      "queries": 460,
+      "typed_candidates": 258,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 0.6120034206674408,
+          "sample_std": 0.01122847904504972
+        },
+        "hits1": {
+          "mean": 0.5086956521739131,
+          "sample_std": 0.00947586726856669
+        },
+        "hits3": {
+          "mean": 0.6826086956521739,
+          "sample_std": 0.015217391304347794
+        },
+        "hits10": {
+          "mean": 0.7963768115942029,
+          "sample_std": 0.017436535384805756
+        },
+        "mean_rank": {
+          "mean": 18.05144927536232,
+          "sample_std": 2.3241980682303027
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 0.5906485042062672,
+          "sample_std": 0.011611513200204128
+        },
+        "hits1": {
+          "mean": 0.4528985507246377,
+          "sample_std": 0.01972559070842927
+        },
+        "hits3": {
+          "mean": 0.6985507246376811,
+          "sample_std": 0.007634531704965766
+        },
+        "hits10": {
+          "mean": 0.8144927536231884,
+          "sample_std": 0.0054708945183121575
+        },
+        "mean_rank": {
+          "mean": 14.675362318840579,
+          "sample_std": 0.8103341667964872
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 0.6047359951783168,
+          "sample_std": 0.011692986538002364
+        },
+        "hits1": {
+          "mean": 0.48405797101449277,
+          "sample_std": 0.031452948426392305
+        },
+        "hits3": {
+          "mean": 0.6855072463768117,
+          "sample_std": 0.018488914235033446
+        },
+        "hits10": {
+          "mean": 0.8152173913043478,
+          "sample_std": 0.010869565217391297
+        },
+        "mean_rank": {
+          "mean": 16.328985507246376,
+          "sample_std": 2.002364308245719
+        }
+      }
+    },
+    "cpm_has_tcmt::传统医学证候": {
+      "queries": 195,
+      "typed_candidates": 175,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 0.5723656539648515,
+          "sample_std": 0.008447304468257446
+        },
+        "hits1": {
+          "mean": 0.47692307692307695,
+          "sample_std": 0.010256410256410248
+        },
+        "hits3": {
+          "mean": 0.6239316239316239,
+          "sample_std": 0.010675210253672436
+        },
+        "hits10": {
+          "mean": 0.7418803418803419,
+          "sample_std": 0.02824395152454414
+        },
+        "mean_rank": {
+          "mean": 14.541880341880344,
+          "sample_std": 1.9624169866626122
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 0.5699186477292998,
+          "sample_std": 0.0014257066163552007
+        },
+        "hits1": {
+          "mean": 0.441025641025641,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 0.6461538461538461,
+          "sample_std": 0.008882311833686582
+        },
+        "hits10": {
+          "mean": 0.8085470085470087,
+          "sample_std": 0.007833462726420212
+        },
+        "mean_rank": {
+          "mean": 12.376068376068375,
+          "sample_std": 0.3059064986012523
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 0.559688557896799,
+          "sample_std": 0.013554008870087977
+        },
+        "hits1": {
+          "mean": 0.4495726495726496,
+          "sample_std": 0.025811399778703437
+        },
+        "hits3": {
+          "mean": 0.6307692307692307,
+          "sample_std": 0.00512820512820511
+        },
+        "hits10": {
+          "mean": 0.7658119658119658,
+          "sample_std": 0.007833462726420272
+        },
+        "mean_rank": {
+          "mean": 13.902564102564101,
+          "sample_std": 0.9300732016463955
+        }
+      }
+    },
+    "cpm_has_tcmt::治则": {
+      "queries": 5,
+      "typed_candidates": 3,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 0.8333333333333334,
+          "sample_std": 0.05773502691896256
+        },
+        "hits1": {
+          "mean": 0.6666666666666666,
+          "sample_std": 0.11547005383792519
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.3333333333333333,
+          "sample_std": 0.11547005383792512
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 0.9,
+          "sample_std": 0.0
+        },
+        "hits1": {
+          "mean": 0.8000000000000002,
+          "sample_std": 1.3597399555105182e-16
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.2,
+          "sample_std": 0.0
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 0.8000000000000002,
+          "sample_std": 1.3597399555105182e-16
+        },
+        "hits1": {
+          "mean": 0.6,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.3999999999999997,
+          "sample_std": 2.7194799110210365e-16
+        }
+      }
+    },
+    "cpm_has_tcmt::治法": {
+      "queries": 429,
+      "typed_candidates": 142,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 0.7145423857804746,
+          "sample_std": 0.006692841797970604
+        },
+        "hits1": {
+          "mean": 0.6184926184926186,
+          "sample_std": 0.014050614856274403
+        },
+        "hits3": {
+          "mean": 0.7824397824397824,
+          "sample_std": 0.010766438586286684
+        },
+        "hits10": {
+          "mean": 0.8733488733488733,
+          "sample_std": 0.0128381597838837
+        },
+        "mean_rank": {
+          "mean": 7.561771561771562,
+          "sample_std": 0.7141698145571111
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 0.7008527118125225,
+          "sample_std": 0.007022102708318643
+        },
+        "hits1": {
+          "mean": 0.5905205905205905,
+          "sample_std": 0.01173245444486519
+        },
+        "hits3": {
+          "mean": 0.7801087801087802,
+          "sample_std": 0.007121329751291115
+        },
+        "hits10": {
+          "mean": 0.8811188811188811,
+          "sample_std": 0.0040374144698575145
+        },
+        "mean_rank": {
+          "mean": 6.632478632478633,
+          "sample_std": 0.33488913766850814
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 0.690275234589178,
+          "sample_std": 0.0041720235156540095
+        },
+        "hits1": {
+          "mean": 0.5765345765345765,
+          "sample_std": 0.007121329751291164
+        },
+        "hits3": {
+          "mean": 0.7785547785547786,
+          "sample_std": 0.0023310023310023076
+        },
+        "hits10": {
+          "mean": 0.8756798756798757,
+          "sample_std": 0.002691609646571655
+        },
+        "mean_rank": {
+          "mean": 7.032634032634032,
+          "sample_std": 0.6842236371571089
+        }
+      }
+    },
+    "cpm_has_tcmt::病因": {
+      "queries": 3,
+      "typed_candidates": 11,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 0.8703703703703703,
+          "sample_std": 0.1156481110814518
+        },
+        "hits1": {
+          "mean": 0.7777777777777777,
+          "sample_std": 0.1924500897298753
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.3333333333333333,
+          "sample_std": 0.33333333333333337
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits1": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 0.8555555555555556,
+          "sample_std": 0.13471506281091264
+        },
+        "hits1": {
+          "mean": 0.7777777777777777,
+          "sample_std": 0.1924500897298753
+        },
+        "hits3": {
+          "mean": 0.8888888888888888,
+          "sample_std": 0.1924500897298753
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.5555555555555556,
+          "sample_std": 0.6938886664887111
+        }
+      }
+    },
+    "cpm_has_tcmt::病机": {
+      "queries": 1,
+      "typed_candidates": 14,
+      "untyped_candidates": 65598,
+      "paircomp": {
+        "mrr": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits1": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        }
+      },
+      "mean_complex": {
+        "mrr": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits1": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        }
+      },
+      "matched": {
+        "mrr": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits1": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits3": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "hits10": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        },
+        "mean_rank": {
+          "mean": 1.0,
+          "sample_std": 0.0
+        }
+      }
+    }
+  },
+  "overall": {
+    "paircomp": {
+      "typed": {
+        "mrr": {
+          "mean": 0.6472546544444374,
+          "sample_std": 0.005602049376252181
+        },
+        "hits1": {
+          "mean": 0.5480329368709972,
+          "sample_std": 0.006907442301254126
+        },
+        "hits3": {
+          "mean": 0.7139371759682831,
+          "sample_std": 0.0027951056388874117
+        },
+        "hits10": {
+          "mean": 0.8185422384873436,
+          "sample_std": 0.01406508393729825
+        },
+        "mean_rank": {
+          "mean": 13.17017383348582,
+          "sample_std": 1.5432704421812593
+        }
+      },
+      "untyped": {
+        "mrr": {
+          "mean": 0.013447398765956513,
+          "sample_std": 0.0023042601672697846
+        },
+        "hits1": {
+          "mean": 0.002134797194266545,
+          "sample_std": 0.0005282253149035917
+        },
+        "hits3": {
+          "mean": 0.007929246721561452,
+          "sample_std": 0.0019045434578830128
+        },
+        "hits10": {
+          "mean": 0.025617566331198535,
+          "sample_std": 0.00714569961199145
+        },
+        "mean_rank": {
+          "mean": 19667.81747483989,
+          "sample_std": 1007.0296070617359
+        }
+      }
+    },
+    "mean_complex": {
+      "typed": {
+        "mrr": {
+          "mean": 0.6331182631378487,
+          "sample_std": 0.00406687031486674
+        },
+        "hits1": {
+          "mean": 0.50838670326319,
+          "sample_std": 0.00830171246649358
+        },
+        "hits3": {
+          "mean": 0.7236962488563586,
+          "sample_std": 0.0024206324895375796
+        },
+        "hits10": {
+          "mean": 0.8411100945410186,
+          "sample_std": 0.003213069153050584
+        },
+        "mean_rank": {
+          "mean": 10.996645318694725,
+          "sample_std": 0.4131724928497153
+        }
+      },
+      "untyped": {
+        "mrr": {
+          "mean": 0.04650772060614877,
+          "sample_std": 0.013335015178885704
+        },
+        "hits1": {
+          "mean": 0.023177798109179627,
+          "sample_std": 0.008695686141740318
+        },
+        "hits3": {
+          "mean": 0.043000914913083256,
+          "sample_std": 0.014203270536376966
+        },
+        "hits10": {
+          "mean": 0.08508691674290943,
+          "sample_std": 0.024702653247941443
+        },
+        "mean_rank": {
+          "mean": 15788.0747179018,
+          "sample_std": 337.84753248524584
+        }
+      }
+    },
+    "matched": {
+      "typed": {
+        "mrr": {
+          "mean": 0.6322164399609567,
+          "sample_std": 0.008848458583751882
+        },
+        "hits1": {
+          "mean": 0.5160109789569991,
+          "sample_std": 0.020231788094689843
+        },
+        "hits3": {
+          "mean": 0.7145471180237878,
+          "sample_std": 0.007817020809988598
+        },
+        "hits10": {
+          "mean": 0.8316559926806953,
+          "sample_std": 0.003298766034276274
+        },
+        "mean_rank": {
+          "mean": 12.124428179322964,
+          "sample_std": 1.270121806335608
+        }
+      },
+      "untyped": {
+        "mrr": {
+          "mean": 0.0048752031233598595,
+          "sample_std": 0.0011891416491389521
+        },
+        "hits1": {
+          "mean": 0.001219884111009454,
+          "sample_std": 0.0013975528194436842
+        },
+        "hits3": {
+          "mean": 0.0015248551387618177,
+          "sample_std": 0.0019045434578830126
+        },
+        "hits10": {
+          "mean": 0.006099420555047271,
+          "sample_std": 0.001904543457883012
+        },
+        "mean_rank": {
+          "mean": 18604.63494967978,
+          "sample_std": 303.85613683696675
+        }
+      }
+    }
+  }
+}

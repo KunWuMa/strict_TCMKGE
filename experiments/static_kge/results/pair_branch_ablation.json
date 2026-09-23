@@ -1,0 +1,61 @@
+{
+  "full": {
+    "mrr": 0.6472546544444374,
+    "hits1": 0.5480329368709973,
+    "hits3": 0.713937175968283,
+    "hits10": 0.8185422384873438
+  },
+  "pair_branch_zeroed": {
+    "mrr": 0.47948692073398297,
+    "hits1": 0.3516315949984751,
+    "hits3": 0.5471180237877402,
+    "hits10": 0.7386398292162245
+  },
+  "full_minus_zeroed": {
+    "mrr": {
+      "queries": 1093,
+      "seeds": 3,
+      "difference": 0.1677677337104545,
+      "bootstrap_95ci": [
+        0.14803427689077245,
+        0.1873668477569399
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "hits1": {
+      "queries": 1093,
+      "seeds": 3,
+      "difference": 0.1964013418725221,
+      "bootstrap_95ci": [
+        0.17108874656907594,
+        0.22140896614821592
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "hits3": {
+      "queries": 1093,
+      "seeds": 3,
+      "difference": 0.16681915218054286,
+      "bootstrap_95ci": [
+        0.14364135407136322,
+        0.1899969502897225
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "hits10": {
+      "queries": 1093,
+      "seeds": 3,
+      "difference": 0.07990240927111925,
+      "bootstrap_95ci": [
+        0.06282403171698689,
+        0.0969807868252516
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    }
+  },
+  "note": "post-hoc inference ablation of frozen checkpoints; no retraining"
+}

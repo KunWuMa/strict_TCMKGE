@@ -1,0 +1,52 @@
+{
+  "composition_provenance": {
+    "source": "F:\\诊断逻辑\\01_诊断知识结构建模与静态表示学习\\TCM-MKG\\D4_CPM_CHP.tsv",
+    "source_role": "declared inference-time side information from the same TCM-MKG release",
+    "sha256": "fcb3349d58bea5b4b0ab10b58b502d8a2989aa4554394d04b38d6220d81cba7d",
+    "contains_relation_removed_from_learned_graph": true
+  },
+  "strict_integrity": {
+    "original_train": 326759,
+    "strict_train": 241178,
+    "held_formula_count": 1215,
+    "held_formula_incident_edges_remaining": 0,
+    "held_formula_overlap_train_test": 0,
+    "dev_test_formula_overlap": 0
+  },
+  "constituent_coverage": {
+    "unique_test_herbs": 649,
+    "unique_dev_herbs": 620,
+    "test_herbs_seen_via_training_formula_compositions": 624,
+    "test_herbs_seen_in_strict_graph": 649,
+    "test_herbs_seen_by_either_training_channel": 649,
+    "unseen_test_herbs": 0,
+    "test_formulas_with_any_unseen_herb": 0,
+    "setting": "formula-inductive; constituent-herb transductive when unseen_test_herbs is zero"
+  },
+  "test_relations": {
+    "cpm_has_tcmt::传统医学疾病": {
+      "queries": 460,
+      "typed_candidates_before_filtering": 258
+    },
+    "cpm_has_tcmt::传统医学证候": {
+      "queries": 195,
+      "typed_candidates_before_filtering": 175
+    },
+    "cpm_has_tcmt::治则": {
+      "queries": 5,
+      "typed_candidates_before_filtering": 3
+    },
+    "cpm_has_tcmt::治法": {
+      "queries": 429,
+      "typed_candidates_before_filtering": 142
+    },
+    "cpm_has_tcmt::病因": {
+      "queries": 3,
+      "typed_candidates_before_filtering": 11
+    },
+    "cpm_has_tcmt::病机": {
+      "queries": 1,
+      "typed_candidates_before_filtering": 14
+    }
+  }
+}

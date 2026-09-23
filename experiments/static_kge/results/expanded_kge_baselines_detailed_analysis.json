@@ -1,0 +1,380 @@
+{
+  "protocol": {
+    "split": "hybrid_holdout",
+    "unit": "query after averaging the three seed-specific reciprocal ranks",
+    "bootstrap_repetitions": 20000,
+    "typed_filtered": true
+  },
+  "overall": {
+    "paircomp_kge": {
+      "mrr": 0.6472546544444374,
+      "hits1": 0.5480329368709973,
+      "hits3": 0.713937175968283,
+      "hits10": 0.8185422384873438,
+      "mean_rank": 13.17017383348582,
+      "per_seed_mrr": [
+        0.6411152991401738,
+        0.6520890401602374,
+        0.648559624032901
+      ]
+    },
+    "mean_complex": {
+      "mrr": 0.6331182631378487,
+      "hits1": 0.50838670326319,
+      "hits3": 0.7236962488563586,
+      "hits10": 0.8411100945410186,
+      "mean_rank": 10.996645318694725,
+      "per_seed_mrr": [
+        0.6378124658318512,
+        0.6306581133116078,
+        0.6308842102700869
+      ]
+    },
+    "rotate": {
+      "mrr": 0.5068134523233615,
+      "hits1": 0.36017078377554135,
+      "hits3": 0.5904239097285758,
+      "hits10": 0.8039036291552303,
+      "mean_rank": 11.720951509606587,
+      "per_seed_mrr": [
+        0.49401678275856425,
+        0.5112991120980874,
+        0.5151244621134329
+      ]
+    },
+    "pairre": {
+      "mrr": 0.6147120284404727,
+      "hits1": 0.48124428179322964,
+      "hits3": 0.7136322049405307,
+      "hits10": 0.8508691674290942,
+      "mean_rank": 9.05946935041171,
+      "per_seed_mrr": [
+        0.611967765591946,
+        0.6232709885185971,
+        0.6088973312108747
+      ]
+    },
+    "nodepiece_transformer": {
+      "mrr": 0.5849929718690725,
+      "hits1": 0.4571515706007929,
+      "hits3": 0.6718511741384569,
+      "hits10": 0.8157974992375724,
+      "mean_rank": 12.476669716376945,
+      "per_seed_mrr": [
+        0.5900343950418094,
+        0.5833834609418838,
+        0.5815610596235241
+      ]
+    },
+    "ingram": {
+      "mrr": 0.1199263095774406,
+      "hits1": 0.04391582799634035,
+      "hits3": 0.11924367185117414,
+      "hits10": 0.25892040256175664,
+      "mean_rank": 47.388533089356514,
+      "per_seed_mrr": [
+        0.09136958781671067,
+        0.06215333462330563,
+        0.2062560062923055
+      ]
+    }
+  },
+  "paired_bootstrap": {
+    "paircomp_vs_mean_complex": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.014136391306588846,
+        "bootstrap_95ci": [
+          0.002092048798750154,
+          0.026014592227896503
+        ],
+        "probability_difference_le_zero": 0.0103,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.03964623360780725,
+        "bootstrap_95ci": [
+          0.021347971942665443,
+          0.057944495272949065
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.009759072888075634,
+        "bootstrap_95ci": [
+          -0.023482769136931994,
+          0.003354681305275999
+        ],
+        "probability_difference_le_zero": 0.92545,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.022567856053674906,
+        "bootstrap_95ci": [
+          -0.035071668191521806,
+          -0.01036901494358036
+        ],
+        "probability_difference_le_zero": 0.99995,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_rotate": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.14044120212107597,
+        "bootstrap_95ci": [
+          0.1209778784347959,
+          0.1594102832066871
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.18786215309545592,
+        "bootstrap_95ci": [
+          0.16193961573650503,
+          0.2131747483989021
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.12351326623970722,
+        "bootstrap_95ci": [
+          0.10094541018603234,
+          0.1454711802378774
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.01463860933211345,
+        "bootstrap_95ci": [
+          -0.0021347971942665437,
+          0.031107044830741087
+        ],
+        "probability_difference_le_zero": 0.0431,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_pairre": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.03254262600396488,
+        "bootstrap_95ci": [
+          0.018832174613197708,
+          0.04619038548530612
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.06678865507776761,
+        "bootstrap_95ci": [
+          0.04666056724611162,
+          0.08722171393717597
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.00030497102775236325,
+        "bootstrap_95ci": [
+          -0.015248551387618174,
+          0.01555352241537054
+        ],
+        "probability_difference_le_zero": 0.48945,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.032326928941750536,
+        "bootstrap_95ci": [
+          -0.04544068313510217,
+          -0.01982311680390363
+        ],
+        "probability_difference_le_zero": 1.0,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_nodepiece_transformer": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.062261682575365046,
+        "bootstrap_95ci": [
+          0.049471484095574655,
+          0.07514976852684742
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.09088136627020434,
+        "bootstrap_95ci": [
+          0.07227813357731015,
+          0.10978956999085086
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.04208600182982617,
+        "bootstrap_95ci": [
+          0.027447392497712723,
+          0.05702958218969198
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.0027447392497712735,
+        "bootstrap_95ci": [
+          -0.010369014943580359,
+          0.015858493443122904
+        ],
+        "probability_difference_le_zero": 0.33835,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_ingram": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.5273283448669969,
+        "bootstrap_95ci": [
+          0.5046942610987334,
+          0.5495493052741884
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.5041171088746569,
+        "bootstrap_95ci": [
+          0.4775846294602013,
+          0.5303446172613603
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.5946935041171089,
+        "bootstrap_95ci": [
+          0.5687709667581581,
+          0.6206160414760598
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.5596218359255871,
+        "bootstrap_95ci": [
+          0.5382738639829218,
+          0.5806648368405002
+        ],
+        "probability_difference_le_zero": 0.0,
+        "repetitions": 20000
+      }
+    }
+  },
+  "clustered_bootstrap": {
+    "paircomp_vs_mean_complex": {
+      "formula_clusters": 610,
+      "edges": 1093,
+      "mrr_difference": 0.014136391306588846,
+      "cluster_bootstrap_95ci": [
+        0.0011898519131840772,
+        0.026952316964403537
+      ],
+      "probability_difference_le_zero": 0.0154,
+      "repetitions": 20000
+    },
+    "paircomp_vs_rotate": {
+      "formula_clusters": 610,
+      "edges": 1093,
+      "mrr_difference": 0.140441202121076,
+      "cluster_bootstrap_95ci": [
+        0.11767680434900805,
+        0.16351095154286363
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "paircomp_vs_pairre": {
+      "formula_clusters": 610,
+      "edges": 1093,
+      "mrr_difference": 0.03254262600396488,
+      "cluster_bootstrap_95ci": [
+        0.017307105484524382,
+        0.0478136134913005
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "paircomp_vs_nodepiece_transformer": {
+      "formula_clusters": 610,
+      "edges": 1093,
+      "mrr_difference": 0.062261682575365046,
+      "cluster_bootstrap_95ci": [
+        0.048221399120593374,
+        0.07675555437330107
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    },
+    "paircomp_vs_ingram": {
+      "formula_clusters": 610,
+      "edges": 1093,
+      "mrr_difference": 0.5273283448669969,
+      "cluster_bootstrap_95ci": [
+        0.49927968080287727,
+        0.5549168613544807
+      ],
+      "probability_difference_le_zero": 0.0,
+      "repetitions": 20000
+    }
+  },
+  "integrity": {
+    "queries": 1093,
+    "test_formulae": 610,
+    "seeds": [
+      20260915,
+      20260916,
+      20260917
+    ]
+  }
+}

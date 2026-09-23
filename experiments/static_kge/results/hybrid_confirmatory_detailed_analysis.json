@@ -1,0 +1,376 @@
+{
+  "overall": {
+    "hybrid": {
+      "mrr": 0.6472546544444374,
+      "hits1": 0.5480329368709973,
+      "hits3": 0.713937175968283,
+      "hits10": 0.8185422384873438,
+      "mean_rank": 13.17017383348582,
+      "per_seed_mrr": [
+        0.6411152991401738,
+        0.6520890401602374,
+        0.648559624032901
+      ]
+    },
+    "parameter_control": {
+      "mrr": 0.6322164399609567,
+      "hits1": 0.5160109789569991,
+      "hits3": 0.7145471180237878,
+      "hits10": 0.8316559926806953,
+      "mean_rank": 12.124428179322964,
+      "per_seed_mrr": [
+        0.6383330874311118,
+        0.6220704376847236,
+        0.6362457947670345
+      ]
+    },
+    "deepsets": {
+      "mrr": 0.6381837817412496,
+      "hits1": 0.5257700518450747,
+      "hits3": 0.7154620311070449,
+      "hits10": 0.8264714852089051,
+      "mean_rank": 12.393107654772797,
+      "per_seed_mrr": [
+        0.6374691211467218,
+        0.6393831919483796,
+        0.6376990321286471
+      ]
+    },
+    "pair_only": {
+      "mrr": 0.6459453947585179,
+      "hits1": 0.5437633424824642,
+      "hits3": 0.7175968283013113,
+      "hits10": 0.8209820067093626,
+      "mean_rank": 14.411100945410187,
+      "per_seed_mrr": [
+        0.6487959494983114,
+        0.6395673024253119,
+        0.6494729323519303
+      ]
+    }
+  },
+  "paired_bootstrap": {
+    "hybrid_vs_parameter_control": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.015038214483480925,
+        "bootstrap_95ci": [
+          0.005362496153882977,
+          0.024680797373109128
+        ],
+        "probability_difference_le_zero": 0.0013,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.03202195791399817,
+        "bootstrap_95ci": [
+          0.017078377554132357,
+          0.04696553827386399
+        ],
+        "probability_difference_le_zero": 5e-05,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.0006099420555047272,
+        "bootstrap_95ci": [
+          -0.011893870082342177,
+          0.010673985971332725
+        ],
+        "probability_difference_le_zero": 0.5395,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.013113754193351633,
+        "bootstrap_95ci": [
+          -0.023482769136931994,
+          -0.0024397682220189095
+        ],
+        "probability_difference_le_zero": 0.9923,
+        "repetitions": 20000
+      }
+    },
+    "hybrid_vs_deepsets": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.009070872703188017,
+        "bootstrap_95ci": [
+          -0.0004526622934137466,
+          0.018621076890817496
+        ],
+        "probability_difference_le_zero": 0.0311,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.022262885025922538,
+        "bootstrap_95ci": [
+          0.007319304666056726,
+          0.03751143641354071
+        ],
+        "probability_difference_le_zero": 0.00215,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.0015248551387618174,
+        "bootstrap_95ci": [
+          -0.012503812137846904,
+          0.00945410186032327
+        ],
+        "probability_difference_le_zero": 0.60515,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.007929246721561452,
+        "bootstrap_95ci": [
+          -0.0192131747483989,
+          0.0033546813052759967
+        ],
+        "probability_difference_le_zero": 0.91925,
+        "repetitions": 20000
+      }
+    },
+    "hybrid_vs_pair_only": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.0013092596859196146,
+        "bootstrap_95ci": [
+          -0.006904743149697549,
+          0.009550116690816795
+        ],
+        "probability_difference_le_zero": 0.3832,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.004269594388533088,
+        "bootstrap_95ci": [
+          -0.008234217749313814,
+          0.016773406526379996
+        ],
+        "probability_difference_le_zero": 0.2601,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.0036596523330283625,
+        "bootstrap_95ci": [
+          -0.014333638304361086,
+          0.007014333638304362
+        ],
+        "probability_difference_le_zero": 0.74615,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.0024397682220189086,
+        "bootstrap_95ci": [
+          -0.011283928026837453,
+          0.006709362610551996
+        ],
+        "probability_difference_le_zero": 0.71515,
+        "repetitions": 20000
+      }
+    },
+    "pair_only_vs_deepsets": {
+      "mrr": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.007761613017268403,
+        "bootstrap_95ci": [
+          -0.0018204142909868358,
+          0.017122145166286323
+        ],
+        "probability_difference_le_zero": 0.0541,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.017993290637389452,
+        "bootstrap_95ci": [
+          0.0033546813052759998,
+          0.032326928941750536
+        ],
+        "probability_difference_le_zero": 0.00825,
+        "repetitions": 20000
+      },
+      "hits3": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": 0.002134797194266545,
+        "bootstrap_95ci": [
+          -0.008844159804818544,
+          0.01311375419335163
+        ],
+        "probability_difference_le_zero": 0.35745,
+        "repetitions": 20000
+      },
+      "hits10": {
+        "queries": 1093,
+        "seeds": 3,
+        "difference": -0.005489478499542545,
+        "bootstrap_95ci": [
+          -0.0158584934431229,
+          0.004574565416285453
+        ],
+        "probability_difference_le_zero": 0.8554,
+        "repetitions": 20000
+      }
+    }
+  },
+  "by_formula_size": {
+    "1_to_5": {
+      "n": 383,
+      "hybrid_mrr": 0.682595413132979,
+      "parameter_control_mrr": 0.6610949707243571,
+      "deepsets_mrr": 0.6593193827888241,
+      "pair_only_mrr": 0.6737345231700934,
+      "hybrid_vs_deepsets": {
+        "queries": 383,
+        "seeds": 3,
+        "difference": 0.023276030344154878,
+        "bootstrap_95ci": [
+          0.006747357261979058,
+          0.039534598024397856
+        ],
+        "probability_difference_le_zero": 0.00285,
+        "repetitions": 20000
+      }
+    },
+    "6_to_10": {
+      "n": 411,
+      "hybrid_mrr": 0.6698051354755596,
+      "parameter_control_mrr": 0.662092589097269,
+      "deepsets_mrr": 0.6705961520445871,
+      "pair_only_mrr": 0.6736310416480729,
+      "hybrid_vs_deepsets": {
+        "queries": 411,
+        "seeds": 3,
+        "difference": -0.00079101656902749,
+        "bootstrap_95ci": [
+          -0.0171066958140724,
+          0.015850013184274328
+        ],
+        "probability_difference_le_zero": 0.5368,
+        "repetitions": 20000
+      }
+    },
+    "over_10": {
+      "n": 299,
+      "hybrid_mrr": 0.5709879043390775,
+      "parameter_control_mrr": 0.5541576621100978,
+      "deepsets_mrr": 0.5665569610191997,
+      "pair_only_mrr": 0.5722930969215929,
+      "hybrid_vs_deepsets": {
+        "queries": 299,
+        "seeds": 3,
+        "difference": 0.004430943319877866,
+        "bootstrap_95ci": [
+          -0.011657880289276543,
+          0.02046246289571097
+        ],
+        "probability_difference_le_zero": 0.2918,
+        "repetitions": 20000
+      }
+    }
+  },
+  "learned_gates": {
+    "hybrid": [
+      {
+        "unary_gate": 0.22837164998054504,
+        "pair_gate_at_5": 0.7655121684074402,
+        "pair_gate_log_size": 1.5276888608932495
+      },
+      {
+        "unary_gate": 0.24802431464195251,
+        "pair_gate_at_5": 0.7677865028381348,
+        "pair_gate_log_size": 1.5055500268936157
+      },
+      {
+        "unary_gate": 0.2488217055797577,
+        "pair_gate_at_5": 0.7737943530082703,
+        "pair_gate_log_size": 1.4645392894744873
+      }
+    ],
+    "parameter_control": [
+      {
+        "unary_gate": 0.5252166390419006,
+        "pair_gate_at_5": 0.7120961546897888,
+        "pair_gate_log_size": 1.4306862354278564
+      },
+      {
+        "unary_gate": 0.5339226126670837,
+        "pair_gate_at_5": 0.7100366353988647,
+        "pair_gate_log_size": 1.2062197923660278
+      },
+      {
+        "unary_gate": 0.5509033799171448,
+        "pair_gate_at_5": 0.7173787355422974,
+        "pair_gate_log_size": 1.1762388944625854
+      }
+    ],
+    "deepsets": [
+      {
+        "residual_gate": 0.6896622180938721
+      },
+      {
+        "residual_gate": 0.6534254550933838
+      },
+      {
+        "residual_gate": 0.6853191256523132
+      }
+    ],
+    "pair_only": [
+      {
+        "residual_gate": 0.7008465528488159
+      },
+      {
+        "residual_gate": 0.682447612285614
+      },
+      {
+        "residual_gate": 0.6903018951416016
+      }
+    ]
+  },
+  "complexity": {
+    "hybrid": {
+      "parameters": 16861443,
+      "mean_training_seconds": 561.632293065389
+    },
+    "parameter_control": {
+      "parameters": 16861443,
+      "mean_training_seconds": 407.67369906107587
+    },
+    "deepsets": {
+      "parameters": 16828673,
+      "mean_training_seconds": 284.4828697045644
+    },
+    "pair_only": {
+      "parameters": 16828673,
+      "mean_training_seconds": 617.9954957167307
+    }
+  },
+  "integrity": {
+    "queries": 1093,
+    "test_heads": 610,
+    "all_test_heads_have_composition": true,
+    "same_corpus_confirmatory_resplit": true
+  }
+}

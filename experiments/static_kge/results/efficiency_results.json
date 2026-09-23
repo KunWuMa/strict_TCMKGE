@@ -1,0 +1,177 @@
+{
+  "hardware": "NVIDIA GeForce RTX 4060 Ti",
+  "torch": "2.3.1+cu121",
+  "encoder_scope": "one generated embedding per unique unseen test formula",
+  "models": {
+    "hybrid": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.275535499999993,
+          "milliseconds_per_formula": 0.005369730327868841,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.3580535000000022,
+          "milliseconds_per_formula": 0.005505005737704922,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.370791499999992,
+          "milliseconds_per_formula": 0.00552588770491802,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "batch_milliseconds_mean": 3.334793499999996,
+      "batch_milliseconds_std": 0.05171263949945102,
+      "parameters": 16861443
+    },
+    "parameter_control": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.2988885000000145,
+          "milliseconds_per_formula": 0.005408013934426253,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.373894499999999,
+          "milliseconds_per_formula": 0.005530974590163933,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16861443,
+          "trainable_megabytes_fp32": 64.3213005065918,
+          "checkpoint_megabytes": 64.32487964630127,
+          "batch_milliseconds_mean": 3.352319000000001,
+          "milliseconds_per_formula": 0.005495604918032788,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "batch_milliseconds_mean": 3.3417006666666715,
+      "batch_milliseconds_std": 0.038613945163408166,
+      "parameters": 16861443
+    },
+    "deepsets": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 1.3852134999999952,
+          "milliseconds_per_formula": 0.0022708418032786806,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 1.3448494999999918,
+          "milliseconds_per_formula": 0.0022046713114753963,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 1.3292030000000035,
+          "milliseconds_per_formula": 0.0021790213114754155,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "batch_milliseconds_mean": 1.3530886666666635,
+      "batch_milliseconds_std": 0.02889994685260103,
+      "parameters": 16828673
+    },
+    "pair_only": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 3.4280215000000065,
+          "milliseconds_per_formula": 0.005619707377049191,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 3.3365389999999984,
+          "milliseconds_per_formula": 0.005469736065573768,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16828673,
+          "trainable_megabytes_fp32": 64.19629287719727,
+          "checkpoint_megabytes": 64.19891738891602,
+          "batch_milliseconds_mean": 3.318045499999993,
+          "milliseconds_per_formula": 0.005439418852459005,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "batch_milliseconds_mean": 3.3608686666666663,
+      "batch_milliseconds_std": 0.05888658297171016,
+      "parameters": 16828673
+    }
+  },
+  "asymptotic_encoder_complexity": {
+    "all_implemented_set_encoders": "O(n d)",
+    "explicit_pair_enumeration_avoided": "O(n^2 d)",
+    "identity": "sum_{i!=j} z_i*z_j = (sum_i z_i)^2 - sum_i z_i^2"
+  },
+  "hybrid_over_deepsets": {
+    "additional_parameters": 32770,
+    "relative_parameter_increase_percent": 0.19472717783511512,
+    "latency_ratio": 2.4645786947689587
+  }
+}
