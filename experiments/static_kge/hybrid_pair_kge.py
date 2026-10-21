@@ -17,7 +17,8 @@ from compositional_kge import (BATCH, DIM, EPOCHS, EVAL_EVERY, NEGATIVES, OUT,
                                make_strict_inductive, read_compositions)
 from train_baselines import Dataset, evaluate, sample_negative_tails
 
-VARIANTS = ("hybrid_pair", "dual_mean_control", "fixed_pair_gate", "ungated_pair")
+VARIANTS = ("hybrid_pair", "dual_mean_control", "second_moment_control",
+            "fixed_pair_gate", "ungated_pair")
 
 
 class HybridPairComplEx(CompositionalComplEx):
@@ -56,6 +57,13 @@ class HybridPairComplEx(CompositionalComplEx):
         keep = (n > 1)[:, None]
         return pr*keep, pi*keep, n
 
+    @staticmethod
+    def _second_moment(ar, ai, valid):
+        """Mean of the elementwise complex squares, including repeated entries."""
+        m = valid[..., None].to(ar.dtype)
+        n = valid.sum(1).to(ar.dtype).clamp_min(1.0)[:, None]
+        return ((ar.square()-ai.square())*m).sum(1)/n, (2*ar*ai*m).sum(1)/n
+
     def head_embedding(self, h, r):
         hr, hi = self.er(h), self.ei(h)
         rows = self.is_formula[h]
@@ -68,9 +76,13 @@ class HybridPairComplEx(CompositionalComplEx):
         mu_r = (weights[..., None]*ar).sum(1)
         mu_i = (weights[..., None]*ai).sum(1)
         unary_r, unary_i = self._transform(mu_r, mu_i, self.unary_r, self.unary_i)
-        pair_r, pair_i, n = self._pair_moment(ar, ai, valid)
+        n = valid.sum(1).to(ar.dtype)
         if self.hybrid_variant == "dual_mean_control":
             pair_r, pair_i = mu_r, mu_i
+        elif self.hybrid_variant == "second_moment_control":
+            pair_r, pair_i = self._second_moment(ar, ai, valid)
+        else:
+            pair_r, pair_i, _ = self._pair_moment(ar, ai, valid)
         branch_r, branch_i = self._transform(pair_r, pair_i, self.branch_r, self.branch_i)
         unary_gate = torch.sigmoid(self.unary_gate)
         centered_log_size = torch.log(n.clamp_min(1.0)) - np.log(5.0)

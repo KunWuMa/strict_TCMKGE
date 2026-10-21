@@ -1,0 +1,269 @@
+{
+  "five_seed_direct_comparison": {
+    "paircomp_vs_mean_complex": {
+      "mrr": {
+        "difference": 0.014846677013441986,
+        "cluster_bootstrap_95ci": [
+          0.002987991642679448,
+          0.02669859872132171
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.03824336688014638,
+        "cluster_bootstrap_95ci": [
+          0.020055172860836246,
+          0.05664845173041894
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_matched": {
+      "mrr": {
+        "difference": 0.016091203094139788,
+        "cluster_bootstrap_95ci": [
+          0.008013243612259737,
+          0.024053372303177965
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.029826166514181154,
+        "cluster_bootstrap_95ci": [
+          0.017793099152168777,
+          0.042222274583726044
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_second_moment": {
+      "mrr": {
+        "difference": 0.017990615345997735,
+        "cluster_bootstrap_95ci": [
+          0.010161313626587884,
+          0.025986204280146634
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.026898444647758465,
+        "cluster_bootstrap_95ci": [
+          0.015218890703447552,
+          0.038814864230734186
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 5,
+        "repetitions": 20000
+      }
+    }
+  },
+  "three_seed_direct_comparison": {
+    "paircomp_vs_mean_complex": {
+      "mrr": {
+        "difference": 0.014136391306588844,
+        "cluster_bootstrap_95ci": [
+          0.0013148850397776222,
+          0.027029640925419398
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.03964623360780725,
+        "cluster_bootstrap_95ci": [
+          0.019993873338464804,
+          0.05966170875739179
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_matched": {
+      "mrr": {
+        "difference": 0.015038214483480921,
+        "cluster_bootstrap_95ci": [
+          0.004824096466315104,
+          0.025099649108608065
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.03202195791399817,
+        "cluster_bootstrap_95ci": [
+          0.016486728199857692,
+          0.047576594419328544
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      }
+    },
+    "paircomp_vs_second_moment": {
+      "mrr": {
+        "difference": 0.014862878243505146,
+        "cluster_bootstrap_95ci": [
+          0.005666011366968773,
+          0.024200141920098412
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      },
+      "hits1": {
+        "difference": 0.020738029887160718,
+        "cluster_bootstrap_95ci": [
+          0.006748610535763601,
+          0.0348979924139769
+        ],
+        "clusters": 610,
+        "queries": 1093,
+        "seeds": 3,
+        "repetitions": 20000
+      }
+    }
+  },
+  "three_seed_deepsets": {
+    "mrr": {
+      "difference": 0.0198013504936304,
+      "cluster_bootstrap_95ci": [
+        0.007084940871161794,
+        0.03260097117886511
+      ],
+      "clusters": 610,
+      "queries": 1093,
+      "seeds": 3,
+      "repetitions": 20000
+    },
+    "hits1": {
+      "difference": 0.04300091491308325,
+      "cluster_bootstrap_95ci": [
+        0.024004800206547543,
+        0.0625193438563912
+      ],
+      "clusters": 610,
+      "queries": 1093,
+      "seeds": 3,
+      "repetitions": 20000
+    }
+  },
+  "by_formula_size": {
+    "singleton": {
+      "queries": 84,
+      "paircomp": {
+        "mrr": 0.670708754528733,
+        "hits1": 0.5952380952380952
+      },
+      "mean_complex": {
+        "mrr": 0.59751808444678,
+        "hits1": 0.4880952380952381
+      },
+      "matched": {
+        "mrr": 0.6375654507221227,
+        "hits1": 0.5555555555555556
+      },
+      "second_moment": {
+        "mrr": 0.6710583579426698,
+        "hits1": 0.5992063492063492
+      },
+      "true_deepsets": {
+        "mrr": 0.5963329945644205,
+        "hits1": 0.49206349206349204
+      }
+    },
+    "2_to_5": {
+      "queries": 299,
+      "paircomp": {
+        "mrr": 0.685934808861262,
+        "hits1": 0.6109253065774805
+      },
+      "mean_complex": {
+        "mrr": 0.6603536018809905,
+        "hits1": 0.5518394648829431
+      },
+      "matched": {
+        "mrr": 0.6677052706580952,
+        "hits1": 0.5629877369007804
+      },
+      "second_moment": {
+        "mrr": 0.6675689059579835,
+        "hits1": 0.568561872909699
+      },
+      "true_deepsets": {
+        "mrr": 0.6510955865800678,
+        "hits1": 0.5373467112597548
+      }
+    },
+    "6_to_10": {
+      "queries": 411,
+      "paircomp": {
+        "mrr": 0.6698051354755596,
+        "hits1": 0.5660989456609895
+      },
+      "mean_complex": {
+        "mrr": 0.6622592573195666,
+        "hits1": 0.5336577453365775
+      },
+      "matched": {
+        "mrr": 0.662092589097269,
+        "hits1": 0.5482562854825629
+      },
+      "second_moment": {
+        "mrr": 0.6595972423835634,
+        "hits1": 0.5547445255474452
+      },
+      "true_deepsets": {
+        "mrr": 0.6545300552298507,
+        "hits1": 0.5279805352798054
+      }
+    },
+    "over_10": {
+      "queries": 299,
+      "paircomp": {
+        "mrr": 0.5709879043390775,
+        "hits1": 0.44704570791527315
+      },
+      "mean_complex": {
+        "mrr": 0.5758276280781974,
+        "hits1": 0.4358974358974359
+      },
+      "matched": {
+        "mrr": 0.5541576621100978,
+        "hits1": 0.4136008918617614
+      },
+      "second_moment": {
+        "mrr": 0.5489556515697429,
+        "hits1": 0.4280936454849498
+      },
+      "true_deepsets": {
+        "mrr": 0.5753346374177656,
+        "hits1": 0.44481605351170567
+      }
+    }
+  },
+  "moment_information_equivalence": "q_f = n_f mu_f^2 - (n_f-1) p_f for n_f > 1"
+}

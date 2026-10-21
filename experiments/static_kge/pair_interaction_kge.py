@@ -18,7 +18,8 @@ from compositional_kge import (BATCH, DIM, EPOCHS, EVAL_EVERY, NEGATIVES, OUT,
                                make_strict_inductive, read_compositions)
 from train_baselines import Dataset, evaluate, sample_negative_tails
 
-VARIANTS = ("deepsets_residual", "pair_residual", "relation_pair_residual")
+VARIANTS = ("deepsets_residual", "deepsets_elementwise", "pair_residual",
+            "relation_pair_residual")
 
 
 class PairCompositionalComplEx(CompositionalComplEx):
@@ -52,7 +53,13 @@ class PairCompositionalComplEx(CompositionalComplEx):
         mu_i = (weights[..., None] * ai).sum(1)
 
         if self.pair_variant == "deepsets_residual":
+            # Historical post-pooling nonlinear control; not a Deep Sets encoder.
             corr_r, corr_i = self._complex_transform(mu_r, mu_i)
+        elif self.pair_variant == "deepsets_elementwise":
+            # Deep Sets: transform each constituent before permutation-invariant pooling.
+            elem_r, elem_i = self._complex_transform(ar, ai)
+            corr_r = (weights[..., None] * elem_r).sum(1)
+            corr_i = (weights[..., None] * elem_i).sum(1)
         else:
             m = valid[..., None].to(ar.dtype)
             sr = (ar*m).sum(1); si = (ai*m).sum(1)

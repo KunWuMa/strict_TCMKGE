@@ -1,0 +1,77 @@
+{
+  "role": "exploratory frozen-model domain-shift stress test",
+  "queries": 98,
+  "patients": 45,
+  "model_state": "no external fitting or tuning",
+  "evaluation_device": "cpu",
+  "paircomp": {
+    "queries": 98,
+    "model_seeds": 3,
+    "mrr": {
+      "mean": 0.2441672327244436,
+      "sample_std": 0.036549061747786646
+    },
+    "hits1": {
+      "mean": 0.15986394557823128,
+      "sample_std": 0.04822260843114906
+    },
+    "hits3": {
+      "mean": 0.272108843537415,
+      "sample_std": 0.005891329277445135
+    },
+    "hits10": {
+      "mean": 0.4047619047619048,
+      "sample_std": 0.052363279994355964
+    },
+    "mean_rank": {
+      "mean": 48.278911564625844,
+      "sample_std": 8.115577119069581
+    }
+  },
+  "second_moment": {
+    "queries": 98,
+    "model_seeds": 3,
+    "mrr": {
+      "mean": 0.2246755079682811,
+      "sample_std": 0.06525906571700126
+    },
+    "hits1": {
+      "mean": 0.13945578231292519,
+      "sample_std": 0.052363279994355964
+    },
+    "hits3": {
+      "mean": 0.2380952380952381,
+      "sample_std": 0.10067107882278055
+    },
+    "hits10": {
+      "mean": 0.42517006802721086,
+      "sample_std": 0.06234796863885495
+    },
+    "mean_rank": {
+      "mean": 46.73129251700681,
+      "sample_std": 7.526064201907541
+    }
+  },
+  "paircomp_minus_second_moment": {
+    "patients": 45,
+    "queries": 98,
+    "mrr": {
+      "difference": 0.019491724756162516,
+      "patient_cluster_bootstrap_95ci": [
+        -0.026325378108418604,
+        0.07186095757423235
+      ],
+      "probability_difference_le_zero": 0.2344,
+      "repetitions": 20000
+    },
+    "hits1": {
+      "difference": 0.02040816326530612,
+      "patient_cluster_bootstrap_95ci": [
+        -0.03488372093023255,
+        0.0784313725490196
+      ],
+      "probability_difference_le_zero": 0.24935,
+      "repetitions": 20000
+    }
+  }
+}

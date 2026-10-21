@@ -54,7 +54,10 @@ def generated_embedding(model, herb_ids, relation_id):
     if isinstance(model, HybridPairComplEx):
         unary_r, unary_i = model._transform(mu_r, mu_i, model.unary_r, model.unary_i)
         valid = torch.ones((1, len(herb_ids)), dtype=torch.bool, device=device)
-        pair_r, pair_i, n = model._pair_moment(ar[None], ai[None], valid)
+        if model.hybrid_variant == "second_moment_control":
+            pair_r, pair_i = model._second_moment(ar[None], ai[None], valid)
+        else:
+            pair_r, pair_i, n = model._pair_moment(ar[None], ai[None], valid)
         if model.hybrid_variant == "dual_mean_control":
             pair_r, pair_i = mu_r, mu_i
         branch_r, branch_i = model._transform(pair_r, pair_i, model.branch_r, model.branch_i)
@@ -68,6 +71,9 @@ def generated_embedding(model, herb_ids, relation_id):
     if isinstance(model, PairCompositionalComplEx):
         if model.pair_variant == "deepsets_residual":
             corr_r, corr_i = model._complex_transform(mu_r, mu_i)
+        elif model.pair_variant == "deepsets_elementwise":
+            elem_r, elem_i = model._complex_transform(ar, ai)
+            corr_r, corr_i = elem_r.mean(0, keepdim=True), elem_i.mean(0, keepdim=True)
         else:
             sr, si = ar.sum(0, keepdim=True), ai.sum(0, keepdim=True)
             denominator = max(1, len(herb_ids) * (len(herb_ids) - 1))

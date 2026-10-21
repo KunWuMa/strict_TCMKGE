@@ -1,0 +1,75 @@
+{
+  "hardware": "NVIDIA GeForce RTX 4060 Ti",
+  "torch": "2.3.1+cu121",
+  "batch_formulas": 610,
+  "models": {
+    "second_moment": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16861443,
+          "batch_milliseconds_mean": 3.171377,
+          "milliseconds_per_formula": 0.005198978688524591,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16861443,
+          "batch_milliseconds_mean": 3.0924120000000066,
+          "milliseconds_per_formula": 0.00506952786885247,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16861443,
+          "batch_milliseconds_mean": 3.116511500000003,
+          "milliseconds_per_formula": 0.005109035245901645,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "parameters": 16861443,
+      "batch_milliseconds_mean": 3.1267668333333365,
+      "batch_milliseconds_std": 0.04046908329309028
+    },
+    "true_deepsets": {
+      "seeds": [
+        {
+          "seed": 20260915,
+          "parameters": 16828673,
+          "batch_milliseconds_mean": 3.7296774999999993,
+          "milliseconds_per_formula": 0.006114225409836064,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260916,
+          "parameters": 16828673,
+          "batch_milliseconds_mean": 3.7274640000000043,
+          "milliseconds_per_formula": 0.006110596721311482,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        },
+        {
+          "seed": 20260917,
+          "parameters": 16828673,
+          "batch_milliseconds_mean": 3.756635500000005,
+          "milliseconds_per_formula": 0.006158418852459025,
+          "batch_formulas": 610,
+          "warmup": 30,
+          "timed_repeats": 200
+        }
+      ],
+      "parameters": 16828673,
+      "batch_milliseconds_mean": 3.7379256666666696,
+      "batch_milliseconds_std": 0.01624094495660242
+    }
+  }
+}
