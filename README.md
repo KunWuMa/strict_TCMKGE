@@ -41,6 +41,8 @@ python experiments/static_kge/benchmark_review_encoders.py
 python experiments/static_kge/make_review_core_figures.py
 ```
 
+Historical aggregate files predating this correction use a deepsets label for a post-pooling nonlinear residual; that model is not a Deep Sets encoder. The current manuscript uses only the corrected elementwise model in true_deepsets_review_results.json. Historical files remain unchanged for traceability.
+
 The released JSON files contain aggregate scores, development selections, and clustered uncertainty. Query-level ranks, checkpoints, individual prescriptions, mappings, and patient-level outputs are excluded. The external evaluation is an exploratory domain-shift stress test; its mapping is incomplete and does not establish clinical validity. The second-moment and pair summaries are algebraically equivalent given mean and formula size for formulas containing more than one herb, so the comparison tests parameterization rather than unique pair information.
 
 See [experiment protocol](experiments/static_kge/EXPERT_SYSTEMS_EXPERIMENT_PROTOCOL.md) for further runs and evaluation details. Some analyses additionally require locally regenerated splits and checkpoints. The InGram comparison uses the official implementation at commit `f2554dd0c684bad71d3e01d534f2f7814cf28644`.
