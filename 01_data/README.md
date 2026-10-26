@@ -12,3 +12,7 @@ No dataset is distributed here. Download from original providers and observe the
 The main benchmark reads TCM-MKG tables `D3_CPM_TCMT.tsv`, `D4_CPM_CHP.tsv`, `D5_CPM_ICD11.tsv`, `D7_CHP_Medicinal_properties.tsv`, `D8_CHP_NP.tsv`, and `D9_CHP_InChIKey.tsv`. Other exploratory scripts may require further tables.
 
 The scripts create processed triples and held-out splits under `experiments/static_kge/benchmark/`. These derived files are not redistributed. Regenerate them from original data, or request the exact processed partitions and deterministic external mappings from the corresponding authors, subject to original-provider permissions.
+
+## Current PairProto independent source
+
+The KTKP records are obtained from the original [InPETM release](https://github.com/bmil-jnu/InPETM) and its [data record](https://data.mendeley.com/datasets/kpvgtm6hh6/1). Follow the extraction and placement instructions in [independent_data/README.md](../experiments/static_kge/independent_data/README.md). Original source tables must be downloaded from their providers. Exact processed splits and mappings may be requested from the corresponding author, subject to those terms.

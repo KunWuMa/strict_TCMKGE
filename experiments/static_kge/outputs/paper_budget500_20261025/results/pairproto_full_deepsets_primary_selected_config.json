@@ -1,0 +1,52 @@
+{
+  "source": "PRIMARY",
+  "split": "recipe_20261023",
+  "amendment_sha256": "baa81bf1c117f0e36748eea14722573b69c20d3ae5663a147c8e4a5407083abe",
+  "candidates": [
+    {
+      "lr": 0.003,
+      "heads": 4,
+      "dev": {
+        "mrr": 0.41773712609655467,
+        "hits1": 0.2868217054263566,
+        "hits3": 0.47674418604651164,
+        "hits10": 0.6724806201550387
+      },
+      "checkpoint": "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915.pt"
+    },
+    {
+      "lr": 0.001,
+      "heads": 4,
+      "dev": {
+        "mrr": 0.40786452846750265,
+        "hits1": 0.2703488372093023,
+        "hits3": 0.4738372093023256,
+        "hits10": 0.6763565891472868
+      },
+      "checkpoint": "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.001_h4_seed20260915.pt"
+    },
+    {
+      "lr": 0.01,
+      "heads": 4,
+      "dev": {
+        "mrr": 0.33533105284155806,
+        "hits1": 0.2054263565891473,
+        "hits3": 0.38275193798449614,
+        "hits10": 0.6065891472868217
+      },
+      "checkpoint": "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.01_h4_seed20260915.pt"
+    }
+  ],
+  "chosen": {
+    "lr": 0.003,
+    "heads": 4,
+    "dev": {
+      "mrr": 0.41773712609655467,
+      "hits1": 0.2868217054263566,
+      "hits3": 0.47674418604651164,
+      "hits10": 0.6724806201550387
+    },
+    "checkpoint": "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915.pt"
+  },
+  "budget500_note": "Frozen historical development selection; candidate dev numbers are historical. New-budget development curves are separate and do not change the chosen main configuration."
+}

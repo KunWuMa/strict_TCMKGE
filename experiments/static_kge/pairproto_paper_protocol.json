@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-22",
+  "method": "PairProto-KGE",
+  "role": "Full new-paper experiment protocol, fixed before added runs; builds on disclosed historical development and test exploration, not public preregistration",
+  "datasets": {
+    "PRIMARY": {"main": "recipe_20261023", "replications": ["recipe_20261024"], "legacy_diagnostic": "hybrid_holdout"},
+    "KTKP": {"main": "20261022", "replications": ["20261023", "20261024"]}
+  },
+  "main_seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "ancillary_seeds": [20260915, 20260916, 20260917],
+  "core_models": ["mean", "pair", "matched", "second_moment"],
+  "ancillary_models": ["deepsets", "set_transformer", "rotate", "pairre", "transe", "distmult", "complex"],
+  "replication_models": ["mean", "pair", "matched", "second_moment"],
+  "display_names": {"pair": "Uniform pair-moment composer", "matched": "Dual-mean control", "second_moment": "Second-moment control", "deepsets": "Residual Deep Sets", "set_transformer": "Set Transformer adapter", "rotate": "Mean-RotatE", "pairre": "Mean-PairRE"},
+  "uniform_moment_control_note": "This is the complete existing hybrid unary-plus-uniform-pair-moment encoder formerly studied as PairComp, not a newly published baseline. Keep the architecture and all results; change the display name to its role as a compositional mechanism control.",
+  "prototype": {"minimum_support": 3, "shrinkage": 20, "ridge_relative": 0.01, "PRIMARY_pair_weight": 0.1, "KTKP_pair_weight": 0.25, "herb_control_weight": 0.1},
+  "selection": "Training and dev checkpoint selection as in saved suite. Core: five seeds; ancillary: three matched seeds. Fixed mixture settings unchanged. Dev-only LR search on the actual main split; selected Mean backbone is shared by Mean and PairProto.",
+  "search_models": ["mean", "pair", "matched", "second_moment", "deepsets", "set_transformer", "rotate", "pairre"],
+  "search_learning_rates": [0.001, 0.003, 0.01],
+  "main_result_policy": "Report development-selected neural baselines and PairProto on the exactly same selected Mean backbone; retain fixed-configuration results separately. Replication carries main-development-selected hyperparameters without re-tuning on replication tests.",
+  "novelty_controls": ["mean", "single_herb_prototypes", "uniform_pair_moment", "second_moment", "unprojected_pair_profiles", "support_binned_pair_identity_shuffle", "shared_pair_prototypes", "relation_identity_shuffle", "no_support_shrinkage", "balanced_marginal_moment_collision_counterexample", "unsupported_pair_fallback"],
+  "mechanism_seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "shuffle_seeds": [20261022, 20261023, 20261024, 20261025, 20261026],
+  "raw_score_weight_grid": [0.0, 0.1, 0.25, 0.5, 0.75, 1.0],
+  "raw_score_selection": "Dev-only mean MRR over the first three seeds, separately for raw herb and raw pair scores; save lock before tests. Includes unblended gamma=1 statistical baseline. No claim of fairness from a fixed raw mixture alone.",
+  "uncertainty": "Five-thousand resamples by formula ID and by exact recipe group; MRR and Hits@1 differences conditional on matched seed-averaged predictions. Report seed SD and relation-macro MRR separately.",
+  "visuals": ["method_framework", "main_comparison", "mechanism_ablation", "paired_uncertainty", "strict_split_replication", "support_and_formula_size", "dev_only_sensitivity", "cost_boundary", "dev_selected_baseline_audit", "development_case_decomposition"],
+  "manuscript": "Rewrite existing English main and separate Supplementary Materials.tex in place; preserve authors and funding, archive prior sources; provide Chinese companion. Use result-generated tables and claims; display pending status until the experiment matrix is complete.",
+  "safety_scope": "Knowledge association retrieval only; no clinical efficacy, pharmacological synergy, graded clinical-evidence or zero-shot cross-graph transfer claims. Known herb entities and target relations are assumed.",
+  "retained_negative_evidence": "Historical ID-holdout results and DragonTCM exploratory findings remain accessible; neither is deleted to favour the new method. Main recipe-disjoint choice is motivated by overlap audit, not test rank."
+}

@@ -1,0 +1,340 @@
+{
+  "date": "2026-10-24",
+  "run_id": "comparison_budget500_20261024",
+  "authorization": "User requested maximum 500 rounds, validation every round, patience 15, fresh five-seed comparison reruns, and concurrent tasks on RTX 4060 Ti 16 GB / RAM 32 GB.",
+  "datasets": {
+    "PRIMARY": "recipe_20261023",
+    "KTKP": "20261022"
+  },
+  "seeds": [
+    20260915,
+    20260916,
+    20260917,
+    20260918,
+    20260919
+  ],
+  "training": {
+    "max_epochs": 500,
+    "eval_every": 1,
+    "patience_evaluations": 15,
+    "selection_metric": "development filtered MRR",
+    "min_delta": 0.0,
+    "ties": "not improvement",
+    "initialization": "fresh random initialization for every training seed; no legacy checkpoint loading",
+    "epoch_semantics": "Existing model-specific semantics retained: full data pass for embedding models, one episode/update for InGram, 100 sampled minibatches for each ULTRA/TRIX round. Equal round caps do not imply equal compute."
+  },
+  "neural_models": [
+    "mean",
+    "rotate",
+    "pairre",
+    "full_deepsets",
+    "set_transformer",
+    "pair"
+  ],
+  "extended_models": [
+    "mean_transe",
+    "mean_distmult",
+    "nodepiece",
+    "ingram",
+    "ultra",
+    "trix"
+  ],
+  "proposed": "PairProto-KGE computed on the corresponding new Mean-ComplEx checkpoint with original train-only prototype construction and fixed weights. No separate gradient training.",
+  "paircomp_role": "Original PairComp retained as Uniform pair-moment composer, separate mechanism comparison, not an external published baseline.",
+  "scope": "Main comparison partitions first. Other mechanism ablations, fixed configurations and replication partitions are outside this first rerun batch.",
+  "hyperparameter_policy": "Carry forward development-selected learning rates and architecture, fixed before new test scoring. No new test-driven selection and no claim of a fresh learning-rate search under the larger budget.",
+  "prior_workbook": {
+    "path": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\pairproto_excel_20261023\\PairProto_All_Seeds.xlsx",
+    "sha256": "f17fa954155263520835370ae933c48cc35a4a7175045868f297727a7cb97117"
+  },
+  "neural_configs": {
+    "PRIMARY": {
+      "mean": {
+        "lr": 0.001,
+        "heads": 4
+      },
+      "rotate": {
+        "lr": 0.001,
+        "heads": 4
+      },
+      "pairre": {
+        "lr": 0.003,
+        "heads": 4
+      },
+      "full_deepsets": {
+        "lr": 0.003,
+        "heads": 4
+      },
+      "set_transformer": {
+        "lr": 0.003,
+        "heads": 8
+      },
+      "pair": {
+        "lr": 0.001,
+        "heads": 4
+      }
+    },
+    "KTKP": {
+      "mean": {
+        "lr": 0.003,
+        "heads": 4
+      },
+      "rotate": {
+        "lr": 0.003,
+        "heads": 4
+      },
+      "pairre": {
+        "lr": 0.01,
+        "heads": 4
+      },
+      "full_deepsets": {
+        "lr": 0.01,
+        "heads": 4
+      },
+      "set_transformer": {
+        "lr": 0.003,
+        "heads": 4
+      },
+      "pair": {
+        "lr": 0.003,
+        "heads": 4
+      }
+    }
+  },
+  "extended_configs": {
+    "PRIMARY": {
+      "mean_transe": {
+        "lr": 0.01
+      },
+      "mean_distmult": {
+        "lr": 0.001
+      },
+      "nodepiece": {
+        "lr": 0.001
+      },
+      "ingram": {
+        "lr": 0.001
+      },
+      "ultra": {
+        "lr": 0.001
+      },
+      "trix": {
+        "lr": 0.0005
+      }
+    },
+    "KTKP": {
+      "mean_transe": {
+        "lr": 0.01
+      },
+      "mean_distmult": {
+        "lr": 0.003
+      },
+      "nodepiece": {
+        "lr": 0.01
+      },
+      "ingram": {
+        "lr": 0.0005
+      },
+      "ultra": {
+        "lr": 0.001
+      },
+      "trix": {
+        "lr": 0.001
+      }
+    }
+  },
+  "extended_architectures": {
+    "date": "2026-10-24",
+    "role": "Additional baseline amendment frozen before new test scoring; existing results and dev choices are preserved.",
+    "datasets": {
+      "PRIMARY": "recipe_20261023",
+      "KTKP": "20261022"
+    },
+    "models": [
+      "mean_transe",
+      "mean_distmult",
+      "nodepiece",
+      "ingram",
+      "ultra",
+      "trix"
+    ],
+    "evaluation_seeds": [
+      20260915,
+      20260916,
+      20260917,
+      20260918,
+      20260919
+    ],
+    "selection_seeds": [
+      20260915,
+      20260916,
+      20260917
+    ],
+    "checkpoint_selection": "typed-filtered dev MRR only; no test scoring until all model/source dev choices are locked",
+    "classic": {
+      "real_dimension": 256,
+      "learning_rates": [
+        0.001,
+        0.003,
+        0.01
+      ],
+      "max_epochs": 40,
+      "negative_tails": 8,
+      "optimizer": "Adam",
+      "weight_decay": 1e-07,
+      "batch_size": 2048,
+      "eval_every": 5,
+      "patience_evaluations": 4
+    },
+    "nodepiece": {
+      "implementation": "Official out-of-sample encoder and DistMult decoder; graph input and training loop adapted",
+      "real_dimension": 256,
+      "anchors": 500,
+      "anchor_strategy": "degree on training message graph only",
+      "nearest_anchors": 20,
+      "relation_tokens": 4,
+      "pooler": "cat",
+      "distance_encoding": true,
+      "dropout": 0.1,
+      "learning_rates": [
+        0.001,
+        0.003,
+        0.01
+      ],
+      "max_epochs": 40,
+      "negative_tails": 8
+    },
+    "ingram": {
+      "implementation": "Official model and relation-graph construction; episodic train/message split",
+      "d_e": 32,
+      "d_r": 32,
+      "hidden_ratio_e": 8,
+      "hidden_ratio_r": 4,
+      "heads": 8,
+      "entity_layers": 2,
+      "relation_layers": 2,
+      "bins": 10,
+      "learning_rates": [
+        0.0001,
+        0.0005,
+        0.001
+      ],
+      "max_epochs": 200,
+      "negative_tails": 10,
+      "margin": 2.0,
+      "message_fraction": 0.75,
+      "eval_every": 10,
+      "patience_evaluations": 5
+    },
+    "ultra": {
+      "implementation": "Official Ultra/RelNBFNet/EntityNBFNet classes",
+      "external_pretraining": false,
+      "dimension": 64,
+      "relation_layers": 6,
+      "entity_layers": 6,
+      "aggregate": "sum",
+      "learning_rates": [
+        0.0001,
+        0.0005,
+        0.001
+      ],
+      "max_epochs": 20,
+      "batches_per_epoch": 100,
+      "batch_size": 8,
+      "negative_tails": 8,
+      "optimizer": "AdamW",
+      "eval_every": 1,
+      "patience_evaluations": 5
+    },
+    "trix": {
+      "implementation": "Official TRIX/RelNet/EntityNet classes",
+      "external_pretraining": false,
+      "dimension": 32,
+      "relation_layers": 3,
+      "entity1_layers": 2,
+      "entity2_layers": 4,
+      "aggregate": "sum",
+      "learning_rates": [
+        0.0001,
+        0.0005,
+        0.001
+      ],
+      "max_epochs": 20,
+      "batches_per_epoch": 100,
+      "batch_size": 8,
+      "negative_tails": 8,
+      "optimizer": "AdamW",
+      "eval_every": 1,
+      "patience_evaluations": 5
+    },
+    "graph_input": "Training facts and composition edges of training formulas; inference adds only the known compositions of formulas in the current eval partition. No held-out target or inverse enters message graphs. Same original entity IDs, splits and frozen candidate ranges as existing methods.",
+    "training_adaptations": "No external pretraining for the main supervised comparison. Graph neural models use their native loss/architecture and recorded computational budgets, not claims of equal optimizer steps. Training target negatives exclude training truths only. Composition edges are message context, not extra target labels.",
+    "evaluation": "Exact existing candidate-range-filtered tail ranking with average tie ranks; MRR, Hits@1/3/5/10, MR; all methods evaluate identical query order.",
+    "portability": "If compiled rspmm is unavailable, call the official unfused message/aggregate/update with PyTorch scatter. Validate values and gradients on a tiny graph. Official source files stay unchanged.",
+    "main_result_policy": "Retain all successfully evaluated requested baselines regardless of whether they outperform PairProto-KGE. Document failures or budget exhaustion; never substitute custom token encoders under official method names.",
+    "prior_artifacts": {
+      "base_protocol_sha256": "2f9210abbb4cb7a3c87227520f009dcd01d806c356aa99fe8b5cbf19661edd5e",
+      "existing_workbook_sha256": "e118621d4dbca0f3ffdbf6b96825a85d16e259ebe7e4f50bc6eb47ae25960337"
+    },
+    "official_sources": {
+      "NodePiece": "9adc57efe302919d017d74fc648f853308cf75fd",
+      "ULTRA": "427966ad8ed60420eef034063d44f3153addff90",
+      "TRIX": "7596e14eefefe89e61396205a0550172cadeddb0",
+      "InGram": "f2554dd0c684bad71d3e01d534f2f7814cf28644"
+    }
+  },
+  "scheduling": {
+    "max_processes": 3,
+    "reserve_host_ram_gb": 5,
+    "minimum_free_gpu_gb_to_launch": 2,
+    "oom_policy": "Retry only the failed unfinished run with lower concurrency and the same scientific configuration. Preserve attempt logs."
+  },
+  "expected_training_runs": 120,
+  "expected_evaluations_including_proposed": 130,
+  "result_policy": "Preserve every completed result regardless of rank. New output directory and new workbook; historical workbook, manuscript and experiments are not overwritten.",
+  "prototype_config": {
+    "ridge_relative": 0.01,
+    "shrinkage": 20,
+    "minimum_pair_support": 3,
+    "weights": {
+      "PRIMARY": [
+        0.0,
+        0.1
+      ],
+      "KTKP": [
+        0.0,
+        0.25
+      ]
+    }
+  },
+  "target_relations": {
+    "PRIMARY": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "KTKP": [
+      0,
+      1,
+      2
+    ]
+  },
+  "code_sha256": {
+    "budget500_training.py": "85ffb428cc65c4c0a504c48c219afa0fca559c171c6f4543cb38a759d3a6df5d",
+    "pair_prototype_full_suite.py": "e1bbc4b6f4acf889970235e6fdc1c5ea7613e2befab581f1e3f1c5670ea9212d",
+    "extended_kge_baselines.py": "33cb05beed4c31a444d8a582eb2ab43d5effd2012b54edd239f696401bc5ce4e",
+    "extended_graph_baselines.py": "0b5697d5c6c90c99b7c755458d7758eba31457b18ba9a355dd6e832b967c9626",
+    "compositional_kge.py": "e38f8c2a6f8f6d5fdd746d3cd50812f6e7a2a419e588796e6f826af73772c30f",
+    "expanded_kge_baselines.py": "6e9c24fb338302edf7938c65bb729e6c40428b886337390b0ebe6268ba89dc1d",
+    "hybrid_pair_kge.py": "dc0c66dbfb7a70a47f8e326cec3e856deaf4d75bc955f37f2977873b1fbdf0bd",
+    "pair_interaction_kge.py": "2be91f17691eef3b4e6d594c6fa9f92b91eebe1c390c121bd1f604b2cb671fde",
+    "pair_prototype_kge.py": "e2581b8f12019b8811430009a9ed8bd6177c184ec3d6de11bb6d3bc2672f27f6",
+    "pair_memory_dev.py": "7d13f2ab9ff1aec433f75ad1d1c4ad252e1297439dd905136ab555882b7c0d77",
+    "pair_prototype_dev.py": "17360a723c2a57780c7d8d5a6e558ff74969ecb7d1d15f7681c51ed683726228",
+    "train_baselines.py": "9d44878af21eef913a8f876226d8e493393fa1495a20b2f17f6e405acbb58482",
+    "inpetm_independent.py": "c29f9a1ae24095a4e860b581e4e103bb9780b394bb0fb57c5f3ad8aba1199cbe"
+  }
+}

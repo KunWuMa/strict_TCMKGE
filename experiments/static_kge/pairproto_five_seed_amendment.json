@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-23",
+  "reason": "User requested five training seeds for every current-paper comparison, fixed configuration and replication partition.",
+  "base_protocol": "pairproto_paper_protocol.json",
+  "base_protocol_sha256": "2f9210abbb4cb7a3c87227520f009dcd01d806c356aa99fe8b5cbf19661edd5e",
+  "evaluation_seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "scope": ["main selected comparisons", "fixed-default comparisons including canonical Deep Sets", "all declared recipe-disjoint replication partitions", "existing five-seed mechanism controls"],
+  "selection_policy": "Keep all existing development selections, mixture weights and checkpoint-selection rules. Add missing training seeds; do not retune using new tests. Existing development searches and three-backbone calibration locks are unchanged.",
+  "historical_policy": "Historical exploratory records, including DragonTCM and the old formula-ID holdout, remain dated archives rather than being reclassified as new five-seed confirmation.",
+  "non_seed_measurements": "Deterministic mathematical witnesses, selected case inspections and one-backbone engineering measurements are not independent repeated training comparisons. Their scope remains explicit."
+}

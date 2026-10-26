@@ -17,11 +17,12 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
+from tcm_data_paths import mkg_directory
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PART1 = next(ROOT.glob("01_*"))
-MKG = PART1 / "TCM-MKG"
+MKG = mkg_directory()
+PART1 = MKG.parent
 OUT = Path(__file__).with_name("benchmark")
 SEED = 20260915
 

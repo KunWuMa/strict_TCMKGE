@@ -1,0 +1,5144 @@
+{
+  "date": "2026-10-25",
+  "method": "PairProto-KGE",
+  "scope": "Complete current-paper matrix extension, including fixed configurations, all declared composition-disjoint replications, mechanisms, development sensitivity, boundary analyses, cases and cost.",
+  "training": {
+    "max_epochs": 500,
+    "eval_every": 1,
+    "patience_evaluations": 15,
+    "selection_metric": "development filtered MRR",
+    "min_delta": 0.0,
+    "ties": "not improvement",
+    "initialization": "fresh random initialization for every training seed; no legacy checkpoint loading",
+    "epoch_semantics": "Existing model-specific semantics retained: full data pass for embedding models, one episode/update for InGram, 100 sampled minibatches for each ULTRA/TRIX round. Equal round caps do not imply equal compute."
+  },
+  "seeds": [
+    20260915,
+    20260916,
+    20260917,
+    20260918,
+    20260919
+  ],
+  "datasets": {
+    "PRIMARY": {
+      "main": "recipe_20261023",
+      "replications": [
+        "recipe_20261024"
+      ],
+      "legacy_diagnostic": "hybrid_holdout"
+    },
+    "KTKP": {
+      "main": "20261022",
+      "replications": [
+        "20261023",
+        "20261024"
+      ]
+    }
+  },
+  "comparison_protocol": {
+    "date": "2026-10-24",
+    "run_id": "comparison_budget500_20261024",
+    "authorization": "User requested maximum 500 rounds, validation every round, patience 15, fresh five-seed comparison reruns, and concurrent tasks on RTX 4060 Ti 16 GB / RAM 32 GB.",
+    "datasets": {
+      "PRIMARY": "recipe_20261023",
+      "KTKP": "20261022"
+    },
+    "seeds": [
+      20260915,
+      20260916,
+      20260917,
+      20260918,
+      20260919
+    ],
+    "training": {
+      "max_epochs": 500,
+      "eval_every": 1,
+      "patience_evaluations": 15,
+      "selection_metric": "development filtered MRR",
+      "min_delta": 0.0,
+      "ties": "not improvement",
+      "initialization": "fresh random initialization for every training seed; no legacy checkpoint loading",
+      "epoch_semantics": "Existing model-specific semantics retained: full data pass for embedding models, one episode/update for InGram, 100 sampled minibatches for each ULTRA/TRIX round. Equal round caps do not imply equal compute."
+    },
+    "neural_models": [
+      "mean",
+      "rotate",
+      "pairre",
+      "full_deepsets",
+      "set_transformer",
+      "pair"
+    ],
+    "extended_models": [
+      "mean_transe",
+      "mean_distmult",
+      "nodepiece",
+      "ingram",
+      "ultra",
+      "trix"
+    ],
+    "proposed": "PairProto-KGE computed on the corresponding new Mean-ComplEx checkpoint with original train-only prototype construction and fixed weights. No separate gradient training.",
+    "paircomp_role": "Original PairComp retained as Uniform pair-moment composer, separate mechanism comparison, not an external published baseline.",
+    "scope": "Main comparison partitions first. Other mechanism ablations, fixed configurations and replication partitions are outside this first rerun batch.",
+    "hyperparameter_policy": "Carry forward development-selected learning rates and architecture, fixed before new test scoring. No new test-driven selection and no claim of a fresh learning-rate search under the larger budget.",
+    "prior_workbook": {
+      "path": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\pairproto_excel_20261023\\PairProto_All_Seeds.xlsx",
+      "sha256": "f17fa954155263520835370ae933c48cc35a4a7175045868f297727a7cb97117"
+    },
+    "neural_configs": {
+      "PRIMARY": {
+        "mean": {
+          "lr": 0.001,
+          "heads": 4
+        },
+        "rotate": {
+          "lr": 0.001,
+          "heads": 4
+        },
+        "pairre": {
+          "lr": 0.003,
+          "heads": 4
+        },
+        "full_deepsets": {
+          "lr": 0.003,
+          "heads": 4
+        },
+        "set_transformer": {
+          "lr": 0.003,
+          "heads": 8
+        },
+        "pair": {
+          "lr": 0.001,
+          "heads": 4
+        }
+      },
+      "KTKP": {
+        "mean": {
+          "lr": 0.003,
+          "heads": 4
+        },
+        "rotate": {
+          "lr": 0.003,
+          "heads": 4
+        },
+        "pairre": {
+          "lr": 0.01,
+          "heads": 4
+        },
+        "full_deepsets": {
+          "lr": 0.01,
+          "heads": 4
+        },
+        "set_transformer": {
+          "lr": 0.003,
+          "heads": 4
+        },
+        "pair": {
+          "lr": 0.003,
+          "heads": 4
+        }
+      }
+    },
+    "extended_configs": {
+      "PRIMARY": {
+        "mean_transe": {
+          "lr": 0.01
+        },
+        "mean_distmult": {
+          "lr": 0.001
+        },
+        "nodepiece": {
+          "lr": 0.001
+        },
+        "ingram": {
+          "lr": 0.001
+        },
+        "ultra": {
+          "lr": 0.001
+        },
+        "trix": {
+          "lr": 0.0005
+        }
+      },
+      "KTKP": {
+        "mean_transe": {
+          "lr": 0.01
+        },
+        "mean_distmult": {
+          "lr": 0.003
+        },
+        "nodepiece": {
+          "lr": 0.01
+        },
+        "ingram": {
+          "lr": 0.0005
+        },
+        "ultra": {
+          "lr": 0.001
+        },
+        "trix": {
+          "lr": 0.001
+        }
+      }
+    },
+    "extended_architectures": {
+      "date": "2026-10-24",
+      "role": "Additional baseline amendment frozen before new test scoring; existing results and dev choices are preserved.",
+      "datasets": {
+        "PRIMARY": "recipe_20261023",
+        "KTKP": "20261022"
+      },
+      "models": [
+        "mean_transe",
+        "mean_distmult",
+        "nodepiece",
+        "ingram",
+        "ultra",
+        "trix"
+      ],
+      "evaluation_seeds": [
+        20260915,
+        20260916,
+        20260917,
+        20260918,
+        20260919
+      ],
+      "selection_seeds": [
+        20260915,
+        20260916,
+        20260917
+      ],
+      "checkpoint_selection": "typed-filtered dev MRR only; no test scoring until all model/source dev choices are locked",
+      "classic": {
+        "real_dimension": 256,
+        "learning_rates": [
+          0.001,
+          0.003,
+          0.01
+        ],
+        "max_epochs": 40,
+        "negative_tails": 8,
+        "optimizer": "Adam",
+        "weight_decay": 1e-07,
+        "batch_size": 2048,
+        "eval_every": 5,
+        "patience_evaluations": 4
+      },
+      "nodepiece": {
+        "implementation": "Official out-of-sample encoder and DistMult decoder; graph input and training loop adapted",
+        "real_dimension": 256,
+        "anchors": 500,
+        "anchor_strategy": "degree on training message graph only",
+        "nearest_anchors": 20,
+        "relation_tokens": 4,
+        "pooler": "cat",
+        "distance_encoding": true,
+        "dropout": 0.1,
+        "learning_rates": [
+          0.001,
+          0.003,
+          0.01
+        ],
+        "max_epochs": 40,
+        "negative_tails": 8
+      },
+      "ingram": {
+        "implementation": "Official model and relation-graph construction; episodic train/message split",
+        "d_e": 32,
+        "d_r": 32,
+        "hidden_ratio_e": 8,
+        "hidden_ratio_r": 4,
+        "heads": 8,
+        "entity_layers": 2,
+        "relation_layers": 2,
+        "bins": 10,
+        "learning_rates": [
+          0.0001,
+          0.0005,
+          0.001
+        ],
+        "max_epochs": 200,
+        "negative_tails": 10,
+        "margin": 2.0,
+        "message_fraction": 0.75,
+        "eval_every": 10,
+        "patience_evaluations": 5
+      },
+      "ultra": {
+        "implementation": "Official Ultra/RelNBFNet/EntityNBFNet classes",
+        "external_pretraining": false,
+        "dimension": 64,
+        "relation_layers": 6,
+        "entity_layers": 6,
+        "aggregate": "sum",
+        "learning_rates": [
+          0.0001,
+          0.0005,
+          0.001
+        ],
+        "max_epochs": 20,
+        "batches_per_epoch": 100,
+        "batch_size": 8,
+        "negative_tails": 8,
+        "optimizer": "AdamW",
+        "eval_every": 1,
+        "patience_evaluations": 5
+      },
+      "trix": {
+        "implementation": "Official TRIX/RelNet/EntityNet classes",
+        "external_pretraining": false,
+        "dimension": 32,
+        "relation_layers": 3,
+        "entity1_layers": 2,
+        "entity2_layers": 4,
+        "aggregate": "sum",
+        "learning_rates": [
+          0.0001,
+          0.0005,
+          0.001
+        ],
+        "max_epochs": 20,
+        "batches_per_epoch": 100,
+        "batch_size": 8,
+        "negative_tails": 8,
+        "optimizer": "AdamW",
+        "eval_every": 1,
+        "patience_evaluations": 5
+      },
+      "graph_input": "Training facts and composition edges of training formulas; inference adds only the known compositions of formulas in the current eval partition. No held-out target or inverse enters message graphs. Same original entity IDs, splits and frozen candidate ranges as existing methods.",
+      "training_adaptations": "No external pretraining for the main supervised comparison. Graph neural models use their native loss/architecture and recorded computational budgets, not claims of equal optimizer steps. Training target negatives exclude training truths only. Composition edges are message context, not extra target labels.",
+      "evaluation": "Exact existing candidate-range-filtered tail ranking with average tie ranks; MRR, Hits@1/3/5/10, MR; all methods evaluate identical query order.",
+      "portability": "If compiled rspmm is unavailable, call the official unfused message/aggregate/update with PyTorch scatter. Validate values and gradients on a tiny graph. Official source files stay unchanged.",
+      "main_result_policy": "Retain all successfully evaluated requested baselines regardless of whether they outperform PairProto-KGE. Document failures or budget exhaustion; never substitute custom token encoders under official method names.",
+      "prior_artifacts": {
+        "base_protocol_sha256": "2f9210abbb4cb7a3c87227520f009dcd01d806c356aa99fe8b5cbf19661edd5e",
+        "existing_workbook_sha256": "e118621d4dbca0f3ffdbf6b96825a85d16e259ebe7e4f50bc6eb47ae25960337"
+      },
+      "official_sources": {
+        "NodePiece": "9adc57efe302919d017d74fc648f853308cf75fd",
+        "ULTRA": "427966ad8ed60420eef034063d44f3153addff90",
+        "TRIX": "7596e14eefefe89e61396205a0550172cadeddb0",
+        "InGram": "f2554dd0c684bad71d3e01d534f2f7814cf28644"
+      }
+    },
+    "scheduling": {
+      "max_processes": 3,
+      "reserve_host_ram_gb": 5,
+      "minimum_free_gpu_gb_to_launch": 2,
+      "oom_policy": "Retry only the failed unfinished run with lower concurrency and the same scientific configuration. Preserve attempt logs."
+    },
+    "expected_training_runs": 120,
+    "expected_evaluations_including_proposed": 130,
+    "result_policy": "Preserve every completed result regardless of rank. New output directory and new workbook; historical workbook, manuscript and experiments are not overwritten.",
+    "prototype_config": {
+      "ridge_relative": 0.01,
+      "shrinkage": 20,
+      "minimum_pair_support": 3,
+      "weights": {
+        "PRIMARY": [
+          0.0,
+          0.1
+        ],
+        "KTKP": [
+          0.0,
+          0.25
+        ]
+      }
+    },
+    "target_relations": {
+      "PRIMARY": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "KTKP": [
+        0,
+        1,
+        2
+      ]
+    },
+    "code_sha256": {
+      "budget500_training.py": "85ffb428cc65c4c0a504c48c219afa0fca559c171c6f4543cb38a759d3a6df5d",
+      "pair_prototype_full_suite.py": "e1bbc4b6f4acf889970235e6fdc1c5ea7613e2befab581f1e3f1c5670ea9212d",
+      "extended_kge_baselines.py": "33cb05beed4c31a444d8a582eb2ab43d5effd2012b54edd239f696401bc5ce4e",
+      "extended_graph_baselines.py": "0b5697d5c6c90c99b7c755458d7758eba31457b18ba9a355dd6e832b967c9626",
+      "compositional_kge.py": "e38f8c2a6f8f6d5fdd746d3cd50812f6e7a2a419e588796e6f826af73772c30f",
+      "expanded_kge_baselines.py": "6e9c24fb338302edf7938c65bb729e6c40428b886337390b0ebe6268ba89dc1d",
+      "hybrid_pair_kge.py": "dc0c66dbfb7a70a47f8e326cec3e856deaf4d75bc955f37f2977873b1fbdf0bd",
+      "pair_interaction_kge.py": "2be91f17691eef3b4e6d594c6fa9f92b91eebe1c390c121bd1f604b2cb671fde",
+      "pair_prototype_kge.py": "e2581b8f12019b8811430009a9ed8bd6177c184ec3d6de11bb6d3bc2672f27f6",
+      "pair_memory_dev.py": "7d13f2ab9ff1aec433f75ad1d1c4ad252e1297439dd905136ab555882b7c0d77",
+      "pair_prototype_dev.py": "17360a723c2a57780c7d8d5a6e558ff74969ecb7d1d15f7681c51ed683726228",
+      "train_baselines.py": "9d44878af21eef913a8f876226d8e493393fa1495a20b2f17f6e405acbb58482",
+      "inpetm_independent.py": "c29f9a1ae24095a4e860b581e4e103bb9780b394bb0fb57c5f3ad8aba1199cbe"
+    }
+  },
+  "comparison_protocol_sha256": "d89e650a9dd2ba2c1baa6ab46af273ccdb951b6209ae28b4842395bda12ae463",
+  "selected": {
+    "PRIMARY": {
+      "mean": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.4941644343519926,
+          "hits1": 0.36046511627906974,
+          "hits3": 0.5668604651162791,
+          "hits10": 0.7616279069767442
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915.pt"
+      },
+      "pair": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.4808018927316446,
+          "hits1": 0.34593023255813954,
+          "hits3": 0.5416666666666666,
+          "hits10": 0.7596899224806202
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915.pt"
+      },
+      "matched": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.4645028201206005,
+          "hits1": 0.3323643410852713,
+          "hits3": 0.5271317829457365,
+          "hits10": 0.7422480620155039
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915.pt"
+      },
+      "second_moment": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.4803930435421703,
+          "hits1": 0.3381782945736434,
+          "hits3": 0.564922480620155,
+          "hits10": 0.7596899224806202
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915.pt"
+      },
+      "deepsets": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.4826867259602801,
+          "hits1": 0.3478682170542636,
+          "hits3": 0.5562015503875969,
+          "hits10": 0.748062015503876
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915.pt"
+      },
+      "set_transformer": {
+        "lr": 0.003,
+        "heads": 8,
+        "dev": {
+          "mrr": 0.47880854579402077,
+          "hits1": 0.35271317829457366,
+          "hits3": 0.5484496124031008,
+          "hits10": 0.7228682170542635
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915.pt"
+      },
+      "rotate": {
+        "lr": 0.001,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.46809403365785085,
+          "hits1": 0.3333333333333333,
+          "hits3": 0.5358527131782945,
+          "hits10": 0.7412790697674418
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915.pt"
+      },
+      "pairre": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.49832610981569525,
+          "hits1": 0.36046511627906974,
+          "hits3": 0.5697674418604651,
+          "hits10": 0.7577519379844961
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915.pt"
+      },
+      "full_deepsets": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.41773712609655467,
+          "hits1": 0.2868217054263566,
+          "hits3": 0.47674418604651164,
+          "hits10": 0.6724806201550387
+        },
+        "checkpoint": "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915.pt"
+      }
+    },
+    "KTKP": {
+      "mean": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.21415817007092275,
+          "hits1": 0.1250654107796965,
+          "hits3": 0.21873364730507588,
+          "hits10": 0.4013605442176871
+        },
+        "checkpoint": "inpetm_ktkp_g400_mean_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "pair": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.1994555383083911,
+          "hits1": 0.11355311355311355,
+          "hits3": 0.20408163265306123,
+          "hits10": 0.3814756671899529
+        },
+        "checkpoint": "inpetm_ktkp_g400_pair_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "matched": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20438694056526865,
+          "hits1": 0.11773940345368916,
+          "hits3": 0.2119309262166405,
+          "hits10": 0.38409209837781266
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915.pt"
+      },
+      "second_moment": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.205429175944229,
+          "hits1": 0.1151229722658294,
+          "hits3": 0.22344322344322345,
+          "hits10": 0.3819989534275249
+        },
+        "checkpoint": "inpetm_ktkp_g400_second_moment_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "deepsets": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20666384819887446,
+          "hits1": 0.11721611721611722,
+          "hits3": 0.21716378859236002,
+          "hits10": 0.3940345368916798
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915.pt"
+      },
+      "set_transformer": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.2066671818635148,
+          "hits1": 0.1151229722658294,
+          "hits3": 0.22919937205651492,
+          "hits10": 0.38618524332810045
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915.pt"
+      },
+      "rotate": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20492194636247205,
+          "hits1": 0.11983254840397697,
+          "hits3": 0.21402407116692831,
+          "hits10": 0.3793825222396651
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915.pt"
+      },
+      "pairre": {
+        "lr": 0.01,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20593183456587136,
+          "hits1": 0.11250654107796965,
+          "hits3": 0.21978021978021978,
+          "hits10": 0.39194139194139194
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915.pt"
+      },
+      "full_deepsets": {
+        "lr": 0.01,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.17425043863517622,
+          "hits1": 0.0847723704866562,
+          "hits3": 0.18419675562532706,
+          "hits10": 0.36159079016221873
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915.pt"
+      }
+    }
+  },
+  "frozen_selection_hashes": {
+    "pairproto_paper_primary_selected_configs.json": "b4a760483494e4ec77f7636c9fd219419fc6af3418cd76db03470cf72b851beb",
+    "pairproto_full_deepsets_primary_selected_config.json": "f38782cbc796a27b8ac11725c6d7ed30a8cdd6ddfc0e16213e55a9db10e16c33",
+    "pairproto_paper_ktkp_selected_configs.json": "70c28192c44ebd44cae5bb8a5e78f393307294f9ccacaa9180affbb031255b61",
+    "pairproto_full_deepsets_ktkp_selected_config.json": "6b7627ff9728bf5b9f790f29c8118f1109d4a31454429b93473d5761039712bc"
+  },
+  "reuse": {
+    "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_full_deepsets_seed20260919.pt"
+    },
+    "prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_mean_seed20260919.pt"
+    },
+    "prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pair_seed20260919.pt"
+    },
+    "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_pairre_seed20260919.pt"
+    },
+    "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_rotate_seed20260919.pt"
+    },
+    "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260915.pt"
+    },
+    "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260916.pt"
+    },
+    "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260917.pt"
+    },
+    "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260918.pt"
+    },
+    "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\ktkp_neural_set_transformer_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_full_deepsets_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_mean_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pair_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_pairre_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_rotate_seed20260919.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260915.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260915.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260916": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260916.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260916.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260917": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260917.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260917.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260918": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260918.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260918.pt"
+    },
+    "prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260919": {
+      "record": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260919.train.json",
+      "checkpoint": "F:\\诊断逻辑\\experiments\\static_kge\\outputs\\comparison_budget500_20261024\\results\\primary_neural_set_transformer_seed20260919.pt"
+    }
+  },
+  "jobs": [
+    {
+      "id": "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "complex",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "complex",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "complex",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "complex",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "complex",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "distmult",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "distmult",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "distmult",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "distmult",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "distmult",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260916,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260917,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260918,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260919,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260916,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260917,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260918,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260919,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "transe",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "transe",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "transe",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "transe",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "transe",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261023",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261024",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "complex",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "complex",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "complex",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "complex",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "complex",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "distmult",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "distmult",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "distmult",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "distmult",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "distmult",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "transe",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "transe",
+      "seed": 20260916,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "transe",
+      "seed": 20260917,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "transe",
+      "seed": 20260918,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "transe",
+      "seed": 20260919,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "matched",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "matched",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "matched",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "matched",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "mean",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "mean",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "mean",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "mean",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "pair",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "pair",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "pair",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "pair",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260915",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260916",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "second_moment",
+      "seed": 20260916,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260917",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "second_moment",
+      "seed": 20260917,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260918",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "second_moment",
+      "seed": 20260918,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260919",
+      "kind": "train",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "model": "second_moment",
+      "seed": 20260919,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260915_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260915,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260916_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260916,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260917_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260917,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260918_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260918,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260919_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260919,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260915_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260915,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260916_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260916,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260917_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260917,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260918_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260918,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261023_20260919_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "seed": 20260919,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261024_20260915_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "seed": 20260915,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261024_20260916_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260916"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "seed": 20260916,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261024_20260917_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "seed": 20260917,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261024_20260918_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260918"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "seed": 20260918,
+      "lr": 0.001
+    },
+    {
+      "id": "prototype__PRIMARY_recipe_20261024_20260919_0.001",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260919"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "seed": 20260919,
+      "lr": 0.001
+    },
+    {
+      "id": "mechanism_lock__PRIMARY",
+      "kind": "mechanism_lock",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY"
+    },
+    {
+      "id": "herb_lock__PRIMARY",
+      "kind": "herb_lock",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY"
+    },
+    {
+      "id": "mechanism__PRIMARY_20260915",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "mechanism_lock__PRIMARY",
+        "prototype__PRIMARY_recipe_20261023_20260915_0.001"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260915
+    },
+    {
+      "id": "herb__PRIMARY_20260915",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "herb_lock__PRIMARY"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260915
+    },
+    {
+      "id": "sensitivity__PRIMARY_20260915",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260915
+    },
+    {
+      "id": "boundary__PRIMARY_20260915",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260915
+    },
+    {
+      "id": "mechanism__PRIMARY_20260916",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+        "mechanism_lock__PRIMARY",
+        "prototype__PRIMARY_recipe_20261023_20260916_0.001"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260916
+    },
+    {
+      "id": "herb__PRIMARY_20260916",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+        "herb_lock__PRIMARY"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260916
+    },
+    {
+      "id": "sensitivity__PRIMARY_20260916",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260916
+    },
+    {
+      "id": "boundary__PRIMARY_20260916",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260916
+    },
+    {
+      "id": "mechanism__PRIMARY_20260917",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917",
+        "mechanism_lock__PRIMARY",
+        "prototype__PRIMARY_recipe_20261023_20260917_0.001"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260917
+    },
+    {
+      "id": "herb__PRIMARY_20260917",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917",
+        "herb_lock__PRIMARY"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260917
+    },
+    {
+      "id": "sensitivity__PRIMARY_20260917",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260917
+    },
+    {
+      "id": "boundary__PRIMARY_20260917",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260917
+    },
+    {
+      "id": "mechanism__PRIMARY_20260918",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918",
+        "mechanism_lock__PRIMARY",
+        "prototype__PRIMARY_recipe_20261023_20260918_0.001"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260918
+    },
+    {
+      "id": "herb__PRIMARY_20260918",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918",
+        "herb_lock__PRIMARY"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260918
+    },
+    {
+      "id": "sensitivity__PRIMARY_20260918",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260918
+    },
+    {
+      "id": "boundary__PRIMARY_20260918",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260918
+    },
+    {
+      "id": "mechanism__PRIMARY_20260919",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919",
+        "mechanism_lock__PRIMARY",
+        "prototype__PRIMARY_recipe_20261023_20260919_0.001"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260919
+    },
+    {
+      "id": "herb__PRIMARY_20260919",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919",
+        "herb_lock__PRIMARY"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260919
+    },
+    {
+      "id": "sensitivity__PRIMARY_20260919",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260919
+    },
+    {
+      "id": "boundary__PRIMARY_20260919",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919"
+      ],
+      "source": "PRIMARY",
+      "seed": 20260919
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h2_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 2
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915"
+      ],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "prototype__KTKP_20261022_20260915_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "seed": 20260915,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261022_20260916_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "seed": 20260916,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261022_20260917_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "seed": 20260917,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261022_20260918_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "seed": 20260918,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261022_20260919_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "seed": 20260919,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261023_20260915_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261023",
+      "seed": 20260915,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261023_20260916_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "KTKP",
+      "split": "20261023",
+      "seed": 20260916,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261023_20260917_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP",
+      "split": "20261023",
+      "seed": 20260917,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261023_20260918_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "KTKP",
+      "split": "20261023",
+      "seed": 20260918,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261023_20260919_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "KTKP",
+      "split": "20261023",
+      "seed": 20260919,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261024_20260915_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261024",
+      "seed": 20260915,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261024_20260916_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "KTKP",
+      "split": "20261024",
+      "seed": 20260916,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261024_20260917_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP",
+      "split": "20261024",
+      "seed": 20260917,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261024_20260918_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "KTKP",
+      "split": "20261024",
+      "seed": 20260918,
+      "lr": 0.003
+    },
+    {
+      "id": "prototype__KTKP_20261024_20260919_0.003",
+      "kind": "prototype",
+      "deps": [
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "KTKP",
+      "split": "20261024",
+      "seed": 20260919,
+      "lr": 0.003
+    },
+    {
+      "id": "mechanism_lock__KTKP",
+      "kind": "mechanism_lock",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP"
+    },
+    {
+      "id": "herb_lock__KTKP",
+      "kind": "herb_lock",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP"
+    },
+    {
+      "id": "mechanism__KTKP_20260915",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "mechanism_lock__KTKP",
+        "prototype__KTKP_20261022_20260915_0.003"
+      ],
+      "source": "KTKP",
+      "seed": 20260915
+    },
+    {
+      "id": "herb__KTKP_20260915",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "herb_lock__KTKP"
+      ],
+      "source": "KTKP",
+      "seed": 20260915
+    },
+    {
+      "id": "sensitivity__KTKP_20260915",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "seed": 20260915
+    },
+    {
+      "id": "boundary__KTKP_20260915",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "seed": 20260915
+    },
+    {
+      "id": "mechanism__KTKP_20260916",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+        "mechanism_lock__KTKP",
+        "prototype__KTKP_20261022_20260916_0.003"
+      ],
+      "source": "KTKP",
+      "seed": 20260916
+    },
+    {
+      "id": "herb__KTKP_20260916",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+        "herb_lock__KTKP"
+      ],
+      "source": "KTKP",
+      "seed": 20260916
+    },
+    {
+      "id": "sensitivity__KTKP_20260916",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "KTKP",
+      "seed": 20260916
+    },
+    {
+      "id": "boundary__KTKP_20260916",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916"
+      ],
+      "source": "KTKP",
+      "seed": 20260916
+    },
+    {
+      "id": "mechanism__KTKP_20260917",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917",
+        "mechanism_lock__KTKP",
+        "prototype__KTKP_20261022_20260917_0.003"
+      ],
+      "source": "KTKP",
+      "seed": 20260917
+    },
+    {
+      "id": "herb__KTKP_20260917",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917",
+        "herb_lock__KTKP"
+      ],
+      "source": "KTKP",
+      "seed": 20260917
+    },
+    {
+      "id": "sensitivity__KTKP_20260917",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP",
+      "seed": 20260917
+    },
+    {
+      "id": "boundary__KTKP_20260917",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917"
+      ],
+      "source": "KTKP",
+      "seed": 20260917
+    },
+    {
+      "id": "mechanism__KTKP_20260918",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918",
+        "mechanism_lock__KTKP",
+        "prototype__KTKP_20261022_20260918_0.003"
+      ],
+      "source": "KTKP",
+      "seed": 20260918
+    },
+    {
+      "id": "herb__KTKP_20260918",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918",
+        "herb_lock__KTKP"
+      ],
+      "source": "KTKP",
+      "seed": 20260918
+    },
+    {
+      "id": "sensitivity__KTKP_20260918",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "KTKP",
+      "seed": 20260918
+    },
+    {
+      "id": "boundary__KTKP_20260918",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918"
+      ],
+      "source": "KTKP",
+      "seed": 20260918
+    },
+    {
+      "id": "mechanism__KTKP_20260919",
+      "kind": "mechanism",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919",
+        "mechanism_lock__KTKP",
+        "prototype__KTKP_20261022_20260919_0.003"
+      ],
+      "source": "KTKP",
+      "seed": 20260919
+    },
+    {
+      "id": "herb__KTKP_20260919",
+      "kind": "herb",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919",
+        "herb_lock__KTKP"
+      ],
+      "source": "KTKP",
+      "seed": 20260919
+    },
+    {
+      "id": "sensitivity__KTKP_20260919",
+      "kind": "sensitivity",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "KTKP",
+      "seed": 20260919
+    },
+    {
+      "id": "boundary__KTKP_20260919",
+      "kind": "boundary",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919"
+      ],
+      "source": "KTKP",
+      "seed": 20260919
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "mean",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pair",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "matched",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "second_moment",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "deepsets",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h2_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 2
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h8_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "set_transformer",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 8
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "rotate",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "pairre",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.003,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.001_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.001,
+      "heads": 4
+    },
+    {
+      "id": "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915",
+      "kind": "dev_audit",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915"
+      ],
+      "source": "KTKP",
+      "split": "20261022",
+      "model": "full_deepsets",
+      "seed": 20260915,
+      "lr": 0.01,
+      "heads": 4
+    },
+    {
+      "id": "measurements__",
+      "kind": "measurements",
+      "deps": [
+        "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_complex_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_distmult_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261022_transe_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261023_matched_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261023_mean_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261023_pair_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261023_second_moment_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261024_matched_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261024_mean_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261024_pair_lr0.003_h4_seed20260919",
+        "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260915",
+        "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260916",
+        "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260917",
+        "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260918",
+        "train__prototype_suite_ktkp_20261024_second_moment_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_complex_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_distmult_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260919",
+        "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261023_transe_lr0.003_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261024_matched_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261024_mean_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261024_pair_lr0.001_h4_seed20260919",
+        "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260915",
+        "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260916",
+        "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260917",
+        "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260918",
+        "train__prototype_suite_primary_recipe_20261024_second_moment_lr0.001_h4_seed20260919",
+        "prototype__PRIMARY_recipe_20261023_20260915_0.001",
+        "prototype__PRIMARY_recipe_20261023_20260916_0.001",
+        "prototype__PRIMARY_recipe_20261023_20260917_0.001",
+        "prototype__PRIMARY_recipe_20261023_20260918_0.001",
+        "prototype__PRIMARY_recipe_20261023_20260919_0.001",
+        "prototype__PRIMARY_recipe_20261023_20260915_0.003",
+        "prototype__PRIMARY_recipe_20261023_20260916_0.003",
+        "prototype__PRIMARY_recipe_20261023_20260917_0.003",
+        "prototype__PRIMARY_recipe_20261023_20260918_0.003",
+        "prototype__PRIMARY_recipe_20261023_20260919_0.003",
+        "prototype__PRIMARY_recipe_20261024_20260915_0.001",
+        "prototype__PRIMARY_recipe_20261024_20260916_0.001",
+        "prototype__PRIMARY_recipe_20261024_20260917_0.001",
+        "prototype__PRIMARY_recipe_20261024_20260918_0.001",
+        "prototype__PRIMARY_recipe_20261024_20260919_0.001",
+        "mechanism_lock__PRIMARY",
+        "herb_lock__PRIMARY",
+        "mechanism__PRIMARY_20260915",
+        "herb__PRIMARY_20260915",
+        "sensitivity__PRIMARY_20260915",
+        "boundary__PRIMARY_20260915",
+        "mechanism__PRIMARY_20260916",
+        "herb__PRIMARY_20260916",
+        "sensitivity__PRIMARY_20260916",
+        "boundary__PRIMARY_20260916",
+        "mechanism__PRIMARY_20260917",
+        "herb__PRIMARY_20260917",
+        "sensitivity__PRIMARY_20260917",
+        "boundary__PRIMARY_20260917",
+        "mechanism__PRIMARY_20260918",
+        "herb__PRIMARY_20260918",
+        "sensitivity__PRIMARY_20260918",
+        "boundary__PRIMARY_20260918",
+        "mechanism__PRIMARY_20260919",
+        "herb__PRIMARY_20260919",
+        "sensitivity__PRIMARY_20260919",
+        "boundary__PRIMARY_20260919",
+        "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_mean_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pair_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_matched_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_second_moment_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_deepsets_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h2_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_set_transformer_lr0.003_h8_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_rotate_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_pairre_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_primary_recipe_20261023_full_deepsets_lr0.01_h4_seed20260915",
+        "prototype__KTKP_20261022_20260915_0.003",
+        "prototype__KTKP_20261022_20260916_0.003",
+        "prototype__KTKP_20261022_20260917_0.003",
+        "prototype__KTKP_20261022_20260918_0.003",
+        "prototype__KTKP_20261022_20260919_0.003",
+        "prototype__KTKP_20261023_20260915_0.003",
+        "prototype__KTKP_20261023_20260916_0.003",
+        "prototype__KTKP_20261023_20260917_0.003",
+        "prototype__KTKP_20261023_20260918_0.003",
+        "prototype__KTKP_20261023_20260919_0.003",
+        "prototype__KTKP_20261024_20260915_0.003",
+        "prototype__KTKP_20261024_20260916_0.003",
+        "prototype__KTKP_20261024_20260917_0.003",
+        "prototype__KTKP_20261024_20260918_0.003",
+        "prototype__KTKP_20261024_20260919_0.003",
+        "mechanism_lock__KTKP",
+        "herb_lock__KTKP",
+        "mechanism__KTKP_20260915",
+        "herb__KTKP_20260915",
+        "sensitivity__KTKP_20260915",
+        "boundary__KTKP_20260915",
+        "mechanism__KTKP_20260916",
+        "herb__KTKP_20260916",
+        "sensitivity__KTKP_20260916",
+        "boundary__KTKP_20260916",
+        "mechanism__KTKP_20260917",
+        "herb__KTKP_20260917",
+        "sensitivity__KTKP_20260917",
+        "boundary__KTKP_20260917",
+        "mechanism__KTKP_20260918",
+        "herb__KTKP_20260918",
+        "sensitivity__KTKP_20260918",
+        "boundary__KTKP_20260918",
+        "mechanism__KTKP_20260919",
+        "herb__KTKP_20260919",
+        "sensitivity__KTKP_20260919",
+        "boundary__KTKP_20260919",
+        "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_mean_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pair_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_matched_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_second_moment_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_deepsets_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h2_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_set_transformer_lr0.003_h8_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_rotate_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.003_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.001_h4_seed20260915",
+        "dev_audit__prototype_suite_ktkp_20261022_full_deepsets_lr0.01_h4_seed20260915"
+      ]
+    }
+  ],
+  "hyperparameter_policy": "Carry historical development-selected architecture/LR to all new runs. Recompute dev-only sensitivity without selecting new main configurations. Raw-profile and projected-herb mixture controls are selected on the declared first three new dev backbones before their test evaluation.",
+  "sensitivity_policy": "Five backbone seeds per source for prototype sensitivity; architecture/LR development audit retains its original one-seed search budget and is not mislabeled as a five-seed test comparison.",
+  "boundary_policy": "Five matched seeds; all-entity evaluation of typed-negative-trained checkpoints. No new global-negative experiment is claimed.",
+  "measurement_policy": "One source-specific backbone measured on an otherwise idle GPU; deterministic moment witnesses rerun without pretending to be five stochastic runs.",
+  "retention_policy": "Keep every declared control, including any stronger ablation. Historical DragonTCM and earlier manuscripts remain archived. No historical 40-round checkpoints loaded.",
+  "code_sha256": {
+    "budget500_paper_worker.py": "696a4b74b51bb6d19b670205abff8940c6f94b928382eebaf930f5eb10a22226",
+    "budget500_training.py": "85ffb428cc65c4c0a504c48c219afa0fca559c171c6f4543cb38a759d3a6df5d",
+    "pair_prototype_full_suite.py": "e1bbc4b6f4acf889970235e6fdc1c5ea7613e2befab581f1e3f1c5670ea9212d",
+    "extended_kge_baselines.py": "33cb05beed4c31a444d8a582eb2ab43d5effd2012b54edd239f696401bc5ce4e",
+    "extended_graph_baselines.py": "0b5697d5c6c90c99b7c755458d7758eba31457b18ba9a355dd6e832b967c9626",
+    "compositional_kge.py": "e38f8c2a6f8f6d5fdd746d3cd50812f6e7a2a419e588796e6f826af73772c30f",
+    "expanded_kge_baselines.py": "6e9c24fb338302edf7938c65bb729e6c40428b886337390b0ebe6268ba89dc1d",
+    "hybrid_pair_kge.py": "dc0c66dbfb7a70a47f8e326cec3e856deaf4d75bc955f37f2977873b1fbdf0bd",
+    "pair_interaction_kge.py": "2be91f17691eef3b4e6d594c6fa9f92b91eebe1c390c121bd1f604b2cb671fde",
+    "pair_prototype_kge.py": "e2581b8f12019b8811430009a9ed8bd6177c184ec3d6de11bb6d3bc2672f27f6",
+    "pair_memory_dev.py": "7d13f2ab9ff1aec433f75ad1d1c4ad252e1297439dd905136ab555882b7c0d77",
+    "pair_prototype_dev.py": "17360a723c2a57780c7d8d5a6e558ff74969ecb7d1d15f7681c51ed683726228",
+    "train_baselines.py": "9d44878af21eef913a8f876226d8e493393fa1495a20b2f17f6e405acbb58482",
+    "inpetm_independent.py": "c29f9a1ae24095a4e860b581e4e103bb9780b394bb0fb57c5f3ad8aba1199cbe"
+  }
+}

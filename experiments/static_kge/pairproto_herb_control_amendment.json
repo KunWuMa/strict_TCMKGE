@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-22",
+  "role": "Control-strengthening amendment; existing results retained, no change to the proposed method",
+  "reason": "The fixed projected-herb control uses weight 0.1 while the proposed pair weight is source-dependent. A development-selected projected-herb control addresses this calibration confound in pair-identity attribution.",
+  "weights_in_tie_order": [0.1, 0.0, 0.25, 0.5, 0.75, 1.0],
+  "selection_seeds": [20260915, 20260916, 20260917],
+  "test_seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "selection": "Highest mean development MRR across the first three fixed selected-Mean backbones; save the source-specific lock before scoring this control on test. Same grouped training profiles, ridge operator, catalogue normalization and retained queries. No backbone retraining or test-based choice.",
+  "reporting": "Retain both the original fixed control and this stronger dev-selected control, regardless of performance. This is a documented local extension after historical test inspection, not a blind preregistered confirmation."
+}

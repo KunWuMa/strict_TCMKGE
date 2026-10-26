@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-24",
+  "role": "Additional baseline amendment frozen before new test scoring; existing results and dev choices are preserved.",
+  "datasets": {
+    "PRIMARY": "recipe_20261023",
+    "KTKP": "20261022"
+  },
+  "models": [
+    "mean_transe",
+    "mean_distmult",
+    "nodepiece",
+    "ingram",
+    "ultra",
+    "trix"
+  ],
+  "evaluation_seeds": [
+    20260915,
+    20260916,
+    20260917,
+    20260918,
+    20260919
+  ],
+  "selection_seeds": [
+    20260915,
+    20260916,
+    20260917
+  ],
+  "checkpoint_selection": "typed-filtered dev MRR only; no test scoring until all model/source dev choices are locked",
+  "classic": {
+    "real_dimension": 256,
+    "learning_rates": [
+      0.001,
+      0.003,
+      0.01
+    ],
+    "max_epochs": 40,
+    "negative_tails": 8,
+    "optimizer": "Adam",
+    "weight_decay": 1e-07,
+    "batch_size": 2048,
+    "eval_every": 5,
+    "patience_evaluations": 4
+  },
+  "nodepiece": {
+    "implementation": "Official out-of-sample encoder and DistMult decoder; graph input and training loop adapted",
+    "real_dimension": 256,
+    "anchors": 500,
+    "anchor_strategy": "degree on training message graph only",
+    "nearest_anchors": 20,
+    "relation_tokens": 4,
+    "pooler": "cat",
+    "distance_encoding": true,
+    "dropout": 0.1,
+    "learning_rates": [
+      0.001,
+      0.003,
+      0.01
+    ],
+    "max_epochs": 40,
+    "negative_tails": 8
+  },
+  "ingram": {
+    "implementation": "Official model and relation-graph construction; episodic train/message split",
+    "d_e": 32,
+    "d_r": 32,
+    "hidden_ratio_e": 8,
+    "hidden_ratio_r": 4,
+    "heads": 8,
+    "entity_layers": 2,
+    "relation_layers": 2,
+    "bins": 10,
+    "learning_rates": [
+      0.0001,
+      0.0005,
+      0.001
+    ],
+    "max_epochs": 200,
+    "negative_tails": 10,
+    "margin": 2.0,
+    "message_fraction": 0.75,
+    "eval_every": 10,
+    "patience_evaluations": 5
+  },
+  "ultra": {
+    "implementation": "Official Ultra/RelNBFNet/EntityNBFNet classes",
+    "external_pretraining": false,
+    "dimension": 64,
+    "relation_layers": 6,
+    "entity_layers": 6,
+    "aggregate": "sum",
+    "learning_rates": [
+      0.0001,
+      0.0005,
+      0.001
+    ],
+    "max_epochs": 20,
+    "batches_per_epoch": 100,
+    "batch_size": 8,
+    "negative_tails": 8,
+    "optimizer": "AdamW",
+    "eval_every": 1,
+    "patience_evaluations": 5
+  },
+  "trix": {
+    "implementation": "Official TRIX/RelNet/EntityNet classes",
+    "external_pretraining": false,
+    "dimension": 32,
+    "relation_layers": 3,
+    "entity1_layers": 2,
+    "entity2_layers": 4,
+    "aggregate": "sum",
+    "learning_rates": [
+      0.0001,
+      0.0005,
+      0.001
+    ],
+    "max_epochs": 20,
+    "batches_per_epoch": 100,
+    "batch_size": 8,
+    "negative_tails": 8,
+    "optimizer": "AdamW",
+    "eval_every": 1,
+    "patience_evaluations": 5
+  },
+  "graph_input": "Training facts and composition edges of training formulas; inference adds only the known compositions of formulas in the current eval partition. No held-out target or inverse enters message graphs. Same original entity IDs, splits and frozen candidate ranges as existing methods.",
+  "training_adaptations": "No external pretraining for the main supervised comparison. Graph neural models use their native loss/architecture and recorded computational budgets, not claims of equal optimizer steps. Training target negatives exclude training truths only. Composition edges are message context, not extra target labels.",
+  "evaluation": "Exact existing candidate-range-filtered tail ranking with average tie ranks; MRR, Hits@1/3/5/10, MR; all methods evaluate identical query order.",
+  "portability": "If compiled rspmm is unavailable, call the official unfused message/aggregate/update with PyTorch scatter. Validate values and gradients on a tiny graph. Official source files stay unchanged.",
+  "main_result_policy": "Retain all successfully evaluated requested baselines regardless of whether they outperform PairProto-KGE. Document failures or budget exhaustion; never substitute custom token encoders under official method names.",
+  "prior_artifacts": {
+    "base_protocol_sha256": "2f9210abbb4cb7a3c87227520f009dcd01d806c356aa99fe8b5cbf19661edd5e",
+    "existing_workbook_sha256": "e118621d4dbca0f3ffdbf6b96825a85d16e259ebe7e4f50bc6eb47ae25960337"
+  },
+  "official_sources": {
+    "NodePiece": "9adc57efe302919d017d74fc648f853308cf75fd",
+    "ULTRA": "427966ad8ed60420eef034063d44f3153addff90",
+    "TRIX": "7596e14eefefe89e61396205a0550172cadeddb0",
+    "InGram": "f2554dd0c684bad71d3e01d534f2f7814cf28644"
+  }
+}

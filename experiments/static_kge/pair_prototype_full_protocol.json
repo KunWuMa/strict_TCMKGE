@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "date": "2026-10-22",
+  "scope": "Primary TCM-MKG benchmark and KTKP; existing DragonTCM findings retained as exploratory domain-shift evidence",
+  "status": "Locally fixed extension protocol, not public preregistration. Historical primary and KTKP split 20261022 test results have already been inspected.",
+  "seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "datasets": {
+    "PRIMARY": {"main_split": "hybrid_holdout", "replications": ["review_split_2", "review_split_3"], "prototype_weights": [0.0, 0.1], "herb_weights": [0.1, 0.0]},
+    "KTKP": {"main_split": "20261022", "replications": ["20261023", "20261024"], "prototype_weights": [0.0, 0.25], "herb_weights": [0.1, 0.0]}
+  },
+  "fixed_prototype": {"ridge_relative": 0.01, "shrinkage": 20, "minimum_pair_support": 3},
+  "replication_models": ["mean", "pair", "second_moment", "matched"],
+  "main_neural_models": ["mean", "pair", "second_moment", "matched", "deepsets", "set_transformer", "rotate", "pairre", "transe", "distmult", "complex"],
+  "search": {
+    "role": "Dev-only sensitivity audit, supplementary to fixed-configuration replication",
+    "seed": 20260915,
+    "models": ["mean", "pair", "second_moment", "matched", "deepsets", "set_transformer", "rotate", "pairre"],
+    "learning_rates": [0.001, 0.003, 0.01],
+    "set_transformer_heads_extra": [2, 8],
+    "selection": "Highest development filtered MRR; ties prefer the existing 0.003 default. Selected configurations are frozen in a separate file before test evaluation.",
+    "prototype_weights_grid": [0.0, 0.1, 0.25, 0.5],
+    "prototype_sensitivity_seed": 20260915,
+    "ridge_relative": [0.001, 0.01, 0.1],
+    "shrinkage": [5, 20, 80],
+    "minimum_pair_support": [1, 3, 10],
+    "sensitivity_selection": "One-factor-at-a-time development analysis only; does not change locked main settings"
+  },
+  "training": {"dimension": 128, "negatives": 8, "max_epochs": 40, "logical_batch": 2048, "weight_decay": 1e-7, "evaluation_every": 5, "patience_checks": 4, "micro_batch_attention": 128, "micro_batch_other": 512},
+  "controls": ["herb_prototype", "raw_unprojected_profiles", "support_binned_pair_shuffle", "frequency_prior"],
+  "evaluation": {"main": "Training-derived relation-range filtered tail ranking", "boundary": "All-entity ranking with typed-negative-trained models, separate diagnostic, not all-entity-trained superiority", "uncertainty": "5000 formula-cluster bootstrap draws on seed-averaged query differences for MRR and Hits@1; seed sample SD reported separately", "strata": ["relation", "composition_size", "supported_pair_coverage"]},
+  "replication_seeds": [20260915, 20260916, 20260917],
+  "integrity": ["Train-only profiles and ranges", "Exact-recipe grouping on KTKP", "Disclose primary split grouping limitations", "All methods use identical retained queries", "Report coverage exclusions", "No test-dependent configuration changes", "Retain unfavourable and null results", "No pharmacological or clinical causality claim"]
+}

@@ -1,0 +1,416 @@
+{
+  "role": "Configurations selected on development only before their test evaluation",
+  "protocol_sha256": "856f5f9185fd0a14603b847ced60ad37e4c49d954f1c52c01137896dbf9f4754",
+  "compute_amendment_sha256": "a2e35b2a263af8beea55d4ac78c6015b8fdebcc988d7afe2213763cd2ce2add5",
+  "source": "KTKP",
+  "split": "20261022",
+  "models": {
+    "mean": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.21415817007092275,
+          "hits1": 0.1250654107796965,
+          "hits3": 0.21873364730507588,
+          "hits10": 0.4013605442176871
+        },
+        "checkpoint": "inpetm_ktkp_g400_mean_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.21415817007092275,
+            "hits1": 0.1250654107796965,
+            "hits3": 0.21873364730507588,
+            "hits10": 0.4013605442176871
+          },
+          "checkpoint": "inpetm_ktkp_g400_mean_k3_b0.25_seed20260915_split20261022.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20837603414340902,
+            "hits1": 0.11773940345368916,
+            "hits3": 0.21768707482993196,
+            "hits10": 0.39194139194139194
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_mean_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20338320672273083,
+            "hits1": 0.10936682365253794,
+            "hits3": 0.2150706436420722,
+            "hits10": 0.3992673992673993
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_mean_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "pair": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.1994555383083911,
+          "hits1": 0.11355311355311355,
+          "hits3": 0.20408163265306123,
+          "hits10": 0.3814756671899529
+        },
+        "checkpoint": "inpetm_ktkp_g400_pair_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.1994555383083911,
+            "hits1": 0.11355311355311355,
+            "hits3": 0.20408163265306123,
+            "hits10": 0.3814756671899529
+          },
+          "checkpoint": "inpetm_ktkp_g400_pair_k3_b0.25_seed20260915_split20261022.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.19925678681571096,
+            "hits1": 0.11459968602825746,
+            "hits3": 0.20460491889063318,
+            "hits10": 0.37257980115122974
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_pair_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.19149483333267622,
+            "hits1": 0.10308738880167452,
+            "hits3": 0.1967556253270539,
+            "hits10": 0.37205651491365777
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_pair_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "matched": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20438694056526865,
+          "hits1": 0.11773940345368916,
+          "hits3": 0.2119309262166405,
+          "hits10": 0.38409209837781266
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20438694056526865,
+            "hits1": 0.11773940345368916,
+            "hits3": 0.2119309262166405,
+            "hits10": 0.38409209837781266
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_matched_lr0.003_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.177163725073539,
+            "hits1": 0.08948194662480377,
+            "hits3": 0.184720041862899,
+            "hits10": 0.3642072213500785
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_matched_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.19264926077982514,
+            "hits1": 0.09733124018838304,
+            "hits3": 0.21821036106750394,
+            "hits10": 0.38095238095238093
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_matched_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "second_moment": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.205429175944229,
+          "hits1": 0.1151229722658294,
+          "hits3": 0.22344322344322345,
+          "hits10": 0.3819989534275249
+        },
+        "checkpoint": "inpetm_ktkp_g400_second_moment_k3_b0.25_seed20260915_split20261022.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.205429175944229,
+            "hits1": 0.1151229722658294,
+            "hits3": 0.22344322344322345,
+            "hits10": 0.3819989534275249
+          },
+          "checkpoint": "inpetm_ktkp_g400_second_moment_k3_b0.25_seed20260915_split20261022.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.18519364381274334,
+            "hits1": 0.09942438513867086,
+            "hits3": 0.1878597592883307,
+            "hits10": 0.3631606488749346
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_second_moment_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.1966264651114766,
+            "hits1": 0.10256410256410256,
+            "hits3": 0.21140763997906856,
+            "hits10": 0.38461538461538464
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_second_moment_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "deepsets": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20666384819887446,
+          "hits1": 0.11721611721611722,
+          "hits3": 0.21716378859236002,
+          "hits10": 0.3940345368916798
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20666384819887446,
+            "hits1": 0.11721611721611722,
+            "hits3": 0.21716378859236002,
+            "hits10": 0.3940345368916798
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_deepsets_lr0.003_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.1957844227289341,
+            "hits1": 0.10570381998953428,
+            "hits3": 0.20565149136577707,
+            "hits10": 0.3793825222396651
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_deepsets_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20005692853349327,
+            "hits1": 0.10727367870225013,
+            "hits3": 0.2119309262166405,
+            "hits10": 0.3867085295656724
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_deepsets_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "set_transformer": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.2066671818635148,
+          "hits1": 0.1151229722658294,
+          "hits3": 0.22919937205651492,
+          "hits10": 0.38618524332810045
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.2066671818635148,
+            "hits1": 0.1151229722658294,
+            "hits3": 0.22919937205651492,
+            "hits10": 0.38618524332810045
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.18608312684353207,
+            "hits1": 0.10204081632653061,
+            "hits3": 0.1946624803767661,
+            "hits10": 0.358451072736787
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.2042818725973976,
+            "hits1": 0.1130298273155416,
+            "hits3": 0.21611721611721613,
+            "hits10": 0.3940345368916798
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.01_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.003,
+          "heads": 2,
+          "dev": {
+            "mrr": 0.2048172045357466,
+            "hits1": 0.11826268969126112,
+            "hits3": 0.20774463631606488,
+            "hits10": 0.3793825222396651
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h2_seed20260915.pt"
+        },
+        {
+          "lr": 0.003,
+          "heads": 8,
+          "dev": {
+            "mrr": 0.20625377339913287,
+            "hits1": 0.12401883830455258,
+            "hits3": 0.2098377812663527,
+            "hits10": 0.3772893772893773
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_set_transformer_lr0.003_h8_seed20260915.pt"
+        }
+      ]
+    },
+    "rotate": {
+      "chosen": {
+        "lr": 0.003,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20492194636247205,
+          "hits1": 0.11983254840397697,
+          "hits3": 0.21402407116692831,
+          "hits10": 0.3793825222396651
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20492194636247205,
+            "hits1": 0.11983254840397697,
+            "hits3": 0.21402407116692831,
+            "hits10": 0.3793825222396651
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_rotate_lr0.003_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.199171499450568,
+            "hits1": 0.10727367870225013,
+            "hits3": 0.2108843537414966,
+            "hits10": 0.38984824699110415
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_rotate_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.19481945720775967,
+            "hits1": 0.10622710622710622,
+            "hits3": 0.20826792255363685,
+            "hits10": 0.3835688121402407
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_rotate_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    },
+    "pairre": {
+      "chosen": {
+        "lr": 0.01,
+        "heads": 4,
+        "dev": {
+          "mrr": 0.20593183456587136,
+          "hits1": 0.11250654107796965,
+          "hits3": 0.21978021978021978,
+          "hits10": 0.39194139194139194
+        },
+        "checkpoint": "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915.pt"
+      },
+      "candidates": [
+        {
+          "lr": 0.003,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20570742753338037,
+            "hits1": 0.11459968602825746,
+            "hits3": 0.21873364730507588,
+            "hits10": 0.3945578231292517
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_pairre_lr0.003_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.001,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.16883092752918802,
+            "hits1": 0.08529565672422815,
+            "hits3": 0.17582417582417584,
+            "hits10": 0.35583464154892724
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_pairre_lr0.001_h4_seed20260915.pt"
+        },
+        {
+          "lr": 0.01,
+          "heads": 4,
+          "dev": {
+            "mrr": 0.20593183456587136,
+            "hits1": 0.11250654107796965,
+            "hits3": 0.21978021978021978,
+            "hits10": 0.39194139194139194
+          },
+          "checkpoint": "prototype_suite_ktkp_20261022_pairre_lr0.01_h4_seed20260915.pt"
+        }
+      ]
+    }
+  },
+  "budget500_note": "Frozen historical development selection; candidate dev numbers are historical. New-budget development curves are separate and do not change the chosen main configuration."
+}

@@ -1,50 +1,98 @@
-# PairComp-KGE code and aggregate results
+# PairProto-KGE: code and aggregate results
 
-This repository releases the PairComp-KGE implementation and frozen aggregate experiment results. It excludes the paper manuscript, third-party source datasets, derived graph triples, train/dev/test TSV splits, individual prescriptions, and patient-level outputs.
+Current study: relation-conditioned pair prototypes for formula-inductive
+knowledge-association retrieval. TCM-MKG and the KTKP subset of InPETM are trained
+and evaluated separately. This is not clinical validation or pharmacological synergy.
 
-- `experiments/static_kge/*.py`: benchmark construction, models, baselines, training, evaluation, analysis and plotting.
-- `experiments/static_kge/results/`: aggregate metrics, development selections, uncertainty estimates and audits.
-- `experiments/static_kge/figures/paper/`: final figures.
-- `experiments/static_kge/benchmark/`: split manifests; no triples.
-- `01_data/`: original-data links and placement instructions.
+## Current evidence (26 October 2026)
 
-Set up the environment from the repository root:
+The main comparisons and all stochastic evaluation groups use five matched seeds
+(20260915–20260919). The training cap is 500 native rounds, development
+MRR is checked every round, and patience is 15 non-improving checks. Native
+rounds differ by architecture; equal caps are not equal compute.
+Two development-selected follow-ups update the current main table:
+TCM-MKG Set Transformer (learning rate 0.003, 2 heads) and
+KTKP Mean-PairRE (learning rate 0.001).
+Original configurations and adverse controls remain in the aggregate record.
+
+- Code: `experiments/static_kge/`.
+- Current aggregate metrics and uncertainty:
+  `experiments/static_kge/published_results/scientific_reports_20261026/`.
+- Current figures (record-level case figure excluded):
+  `experiments/static_kge/figures/scientific_reports_20261026/`.
+- Frozen histories: `experiments/static_kge/outputs/*/protocol.json`.
+- Older PairComp implementation/results remain for historical provenance;
+  they are not the proposed PairProto method.
+
+## Data access
+
+Download the original sources using [01_data/README.md](01_data/README.md) and
+[the independent-source instructions](experiments/static_kge/independent_data/README.md).
+Set `TCM_MKG_DIR` and `INPETM_DATA_DIR` to original table directories.
+No source datasets, processed triples, query records, ranks, patient records,
+checkpoints or manuscripts are distributed here.
+The complete Excel includes record-level queries and is not public.
+Request exact processed partitions and record-level evidence from the corresponding
+author, subject to provider terms. Reconstruction code and aggregate hashes are public.
+
+## Environment and upstream models
+
+Use Python 3.9 and PyTorch 2.3.1 with CUDA 12.1. Analysis packages are in
+`experiments/static_kge/requirements-pairproto.txt`.
+Install official PyG / torch-scatter wheels compatible with that PyTorch/CUDA
+combination: torch-geometric 2.5.3 and torch-scatter 2.1.2+pt23cu121.
+Fetch pinned upstream code, without its benchmark data:
 
 ```bash
-conda env create -f experiments/static_kge/environment.yml
-conda activate paircomp-kge
+python experiments/static_kge/fetch_official_kge_pinned.py
 ```
 
-Download TCM-MKG v3 as described in [01_data/README.md](01_data/README.md), then run:
+NodePiece, InGram, ULTRA and TRIX are protocol adapters, trained from scratch;
+these results do not reproduce every capability or best score in their papers.
+No external graph pretraining is used.
+
+## Reproduction entry points
+
+Train either locked follow-up freshly, including its first seed,
+without requiring the authors' reused checkpoint:
 
 ```bash
-python experiments/static_kge/build_benchmark.py
-python experiments/static_kge/build_composition_benchmark.py
-python experiments/static_kge/build_hybrid_benchmark.py
-python experiments/static_kge/run_hybrid_confirmatory.py
-python experiments/static_kge/analyze_hybrid_confirmatory.py
+python experiments/static_kge/reproduce_sr_baseline_fresh.py --source PRIMARY --seed 20260915
+python experiments/static_kge/reproduce_sr_baseline_fresh.py --source KTKP --seed 20260915
 ```
 
+Repeat for all five seeds. Fresh runs have a separate directory and identity.
+The archived `run_scientific_reports_followup.py` mirrors the authors'
+checkpoint reuse and deliberately requires the original audit checkpoint.
+Author-local paths are not downloadable data.
 
-### Reviewer-controlled second-order experiments
+`budget500_training.py`, `budget500_paper_worker.py` and the frozen protocols
+contain the model/evaluation implementations and experiment matrix.
+The original `run_budget500_comparisons.py` / `run_budget500_paper.py` schedulers
+require earlier artifacts and author-local paths in their preflights.
+They are provenance scripts, not a tested clean-machine one-command benchmark.
+Reconstruct data and restore configuration locks before running them.
 
-After regenerating the local benchmark and obtaining the source datasets under their original terms, run the exactly parameter-matched second-moment comparison and corrected elementwise Deep Sets baseline:
+Numerical paper analysis reads Excel ranks and typed metadata.
+Displayed SeedMetrics are cross-checked against ranks; editing only those
+display values does not legitimately change experimental evidence.
+With complete evidence obtained under the data terms, run
+`scientific_reports_results.py --recompute-only --statistics-only`.
+Its default author-only manuscript export is intentionally excluded here.
+
+For aggregate-only plots, without source data:
 
 ```bash
-python experiments/static_kge/test_second_moment_review.py
-python experiments/static_kge/run_second_moment_review.py
-python experiments/static_kge/run_true_deepsets_review.py
-python experiments/static_kge/analyze_second_moment_review.py
-python experiments/static_kge/evaluate_second_moment_external.py
-python experiments/static_kge/evaluate_true_deepsets_external.py
-python experiments/static_kge/benchmark_review_encoders.py
-python experiments/static_kge/make_review_core_figures.py
+python experiments/static_kge/plot_sr_aggregate_release.py
 ```
 
-Historical aggregate files predating this correction use a deepsets label for a post-pooling nonlinear residual; that model is not a Deep Sets encoder. The current manuscript uses only the corrected elementwise model in true_deepsets_review_results.json. Historical files remain unchanged for traceability.
+Source-table reconstruction checks cover all five reported partitions.
+The author machine and source reconstructions were verified; independent
+end-to-end execution of the whole matrix on a fresh machine is not claimed.
 
-The released JSON files contain aggregate scores, development selections, and clustered uncertainty. Query-level ranks, checkpoints, individual prescriptions, mappings, and patient-level outputs are excluded. The external evaluation is an exploratory domain-shift stress test; its mapping is incomplete and does not establish clinical validity. The second-moment and pair summaries are algebraically equivalent given mean and formula size for formulas containing more than one herb, so the comparison tests parameterization rather than unique pair information.
+## Interpretation
 
-See [experiment protocol](experiments/static_kge/EXPERT_SYSTEMS_EXPERIMENT_PROTOCOL.md) for further runs and evaluation details. Some analyses additionally require locally regenerated splits and checkpoints. The InGram comparison uses the official implementation at commit `f2554dd0c684bad71d3e01d534f2f7814cf28644`.
-
-The exact processed splits and external terminology mappings may be requested from the corresponding authors, subject to the source providers' permissions. To check a staged release for excluded content, run `python release_audit.py`. This is methodological research, not clinical advice.
+The proposed configuration improves over the shared mean backbone on both main
+partitions, with positive directions in all five partitions. This does not imply
+uniform superiority, lowest variance, clinical causality or unrestricted ranking
+superiority. Competitive or better raw-score and support ablations are retained.

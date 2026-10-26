@@ -16,10 +16,11 @@ from torch import nn
 from torch.nn import functional as F
 
 from train_baselines import Dataset, evaluate, sample_negative_tails
+from tcm_data_paths import mkg_directory
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-MKG = next(ROOT.glob("01_*")) / "TCM-MKG"
+MKG = mkg_directory()
 OUT = HERE / "results"
 SEED = 20260915
 DIM = 128

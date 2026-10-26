@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-22",
+  "role": "Compute allocation clarification before ancillary baseline and sensitivity-search results",
+  "reason": "Five-seed stability is concentrated on the proposed method and mechanism controls; ancillary comparisons use three matched seeds. Report run counts, and use the common seeds for paired comparisons.",
+  "five_seed_models": ["mean", "pair", "second_moment", "matched"],
+  "three_seed_models": ["deepsets", "set_transformer", "rotate", "pairre", "transe", "distmult", "complex"],
+  "prototype_and_herb_control_seeds": [20260915, 20260916, 20260917, 20260918, 20260919],
+  "dev_search_models": ["mean", "pair", "deepsets", "set_transformer"],
+  "dev_search_budget": "Three learning rates per model at seed 20260915; Set Transformer receives two additional head-count checks. Same 40-epoch cap, development checkpoint selection and early stopping. The extra attention checks favour the baseline rather than the proposed encoder.",
+  "paired_backbone_audit": "After development-only Mean learning-rate selection, also apply the fixed-weight prototype composer to exactly the same selected Mean checkpoints. No new prototype-weight search. Report separately from locked fixed-configuration replication.",
+  "statistics": "For a three-seed ancillary baseline, compare against the same first three proposed-method seeds; never compare unpaired means as if paired. Five-seed main-method summary remains separately reported.",
+  "configuration_policy": "Do not change fixed prototype weights, support, ridge, shrinkage, dataset eligibility or test queries. Preserve original protocol alongside this explicit amendment."
+}

@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "workbook_sha256": "d4937a7e628d8fec4aa4b5a4a44bba87d78a96bb070602da88ad6b0bcfac5ee8",
+  "partitions": [
+    {
+      "source": "PRIMARY",
+      "split": "recipe_20261023",
+      "train_triples": 242192,
+      "dev_queries": 1032,
+      "test_queries": 1013,
+      "test_order_matches_workbook": true,
+      "incident_edge_leakage": false,
+      "exact_recipe_overlap": false,
+      "candidate_extension_from_test": false,
+      "train_sha256": "eb800b6bc43158fdc15e365b7ea751b16d6ff48a3a1bdbaf426d6c9c34fab68a",
+      "dev_sha256": "61873bfb0babdaf91ba7401670a347f91ee2554da8853122d33e1115f02892e6",
+      "test_sha256": "f41b88a80e75415fd89f6d88c7241a8fc644e371c6f5405880bfff0724619075"
+    },
+    {
+      "source": "PRIMARY",
+      "split": "recipe_20261024",
+      "train_triples": 241316,
+      "dev_queries": 1010,
+      "test_queries": 1123,
+      "test_order_matches_workbook": true,
+      "incident_edge_leakage": false,
+      "exact_recipe_overlap": false,
+      "candidate_extension_from_test": false,
+      "train_sha256": "38778db64a18d8ac8ae3b0d26759b7bcece36b6eab35049b6ff458aa3d0bc991",
+      "dev_sha256": "7a930f980477c000f4a06c79a147b48cb845e845b2b6d9686da63b13b3f25bd5",
+      "test_sha256": "b98270f125b91912e46cb03ff976963fe2fc8902f01f34c092b949ddfb00bb37"
+    },
+    {
+      "source": "KTKP",
+      "split": "20261022",
+      "train_triples": 51698,
+      "dev_queries": 1911,
+      "test_queries": 2128,
+      "test_order_matches_workbook": true,
+      "incident_edge_leakage": false,
+      "exact_recipe_overlap": false,
+      "candidate_extension_from_test": false,
+      "train_sha256": "2351e3b65c56d31ce49a3303d558b8245b2713ee155713c1165e8cfe2e89b6a7",
+      "dev_sha256": "d33548f5f6b0aa16fcdc94e00f811a224d754e70e14440a6f63ce06e1f21961d",
+      "test_sha256": "2f8e4cf0b1caefd0458c66c9a47df1f2925566d4e8b2b5718adcc333b5e28e9c"
+    },
+    {
+      "source": "KTKP",
+      "split": "20261023",
+      "train_triples": 51470,
+      "dev_queries": 2212,
+      "test_queries": 2065,
+      "test_order_matches_workbook": true,
+      "incident_edge_leakage": false,
+      "exact_recipe_overlap": false,
+      "candidate_extension_from_test": false,
+      "train_sha256": "5b88676545313a54745608b825c3c62db0d24218721a1046f471e082634f17ce",
+      "dev_sha256": "b33c6bf2a3c8d9f97c31f9fb4e9001e9dcdb7334ca9759960b4f9fa322b36f5e",
+      "test_sha256": "8a0fe8429df90050eb028d973416b30a15b288e86802d700e098b1c01b56ae0e"
+    },
+    {
+      "source": "KTKP",
+      "split": "20261024",
+      "train_triples": 51382,
+      "dev_queries": 2140,
+      "test_queries": 2201,
+      "test_order_matches_workbook": true,
+      "incident_edge_leakage": false,
+      "exact_recipe_overlap": false,
+      "candidate_extension_from_test": false,
+      "train_sha256": "0f887df7faf5388d9428210aee2cc7ff70e327f837134c90109a02d0522e4f2f",
+      "dev_sha256": "6bd87c39d9803ca04b623f8061e75c16d70d2386b75eb8224439e5935a230f57",
+      "test_sha256": "0e2e0b898fc1baf6faa7611d2faaffcce8101e6aa6804417d2533593ace39437"
+    }
+  ],
+  "method": "Fresh source-table reconstruction; no result cache used; source datasets are not exported."
+}

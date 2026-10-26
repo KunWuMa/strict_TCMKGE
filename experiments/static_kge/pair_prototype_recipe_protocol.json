@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-22",
+  "reason": "Historical primary split audit found 236 exact recipe sets shared between training and test. Add a composition-disjoint validation rather than relabel formula-ID holdout as composition holdout.",
+  "dataset": "PRIMARY",
+  "source_graph": "Unfiltered source target and context edges from build_benchmark.collect; do not inherit historical held-out coverage filtering",
+  "split": "recipe_20261023",
+  "split_seed": 20261023,
+  "seeds": [20260915, 20260916, 20260917],
+  "models": ["mean", "pair", "second_moment", "matched"],
+  "groups": "Exact unordered herb-ID sets; all formula aliases in a group assigned jointly",
+  "heldout_fraction_each": 0.1,
+  "evaluation": "Training-derived relation-range filtered tail ranking; exclude queries with herbs absent from strict training graph or targets outside training ranges, disclose counts and use same queries for all models",
+  "prototype": {"weights": [0.0, 0.1], "herb_control": [0.1, 0.0], "ridge_relative": 0.01, "shrinkage": 20, "minimum_pair_support": 3},
+  "selection": "No architecture, weight or support changes based on this test. Original main protocol configurations reused.",
+  "status": "Local additional protocol fixed after discovering overlap, before constructing or testing the new split. Not external preregistration. Source itself previously studied."
+}

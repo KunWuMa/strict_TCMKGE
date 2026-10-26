@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-22",
+  "role": "Architecture-fidelity correction before new full-Deep-Sets test runs; original results retained",
+  "reason": "The prior elementwise residual transform with mean pooling has no nonlinear post-pooling rho and must not represent the full published Deep Sets family in the main comparison.",
+  "primary_source": "https://proceedings.neurips.cc/paper/2017/file/f22e4747da1aa27e363d86d40ff442fe-Paper.pdf",
+  "model_tag": "full_deepsets",
+  "architecture": "Concatenated herb embeddings of width 256; phi Linear(256,256)-ReLU-Linear(256,256); masked SUM; rho Linear(256,256)-ReLU-Linear(256,256); standard ComplEx decoder; no extra mean residual",
+  "datasets": ["PRIMARY", "KTKP"],
+  "splits": {"PRIMARY": "recipe_20261023", "KTKP": "20261022"},
+  "seeds": [20260915, 20260916, 20260917],
+  "learning_rates": [0.003, 0.001, 0.01],
+  "selection": "First-seed development MRR; save full selection lock before scoring any full-Deep-Sets test run. Strict ties retain earlier declared default. Same dimension, negatives, optimizer, epoch budget, stopping rule, training edges and candidate ranges as other neural models.",
+  "reporting": "Full Deep Sets appears in the common-ComplEx main comparison. Earlier residual elementwise encoder remains in supplementary internal controls. Retain new results regardless of whether they exceed PairProto.",
+  "scope": "No change to PairProto, source grouping, its main hyperparameters or its declared inference boundary. No additional external annotations. This is a documented local amendment, not external preregistration."
+}
